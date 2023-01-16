@@ -4,6 +4,8 @@
 
 ### Features
 
+- [#6721](https://github.com/blockscout/blockscout/pull/6721) - Implement fetching internal transactions from callTracer
+
 ### Fixes
 
 ### Chore
