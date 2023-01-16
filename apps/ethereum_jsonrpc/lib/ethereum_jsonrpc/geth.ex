@@ -73,10 +73,16 @@ defmodule EthereumJSONRPC.Geth do
     debug_trace_transaction_timeout =
       Application.get_env(:ethereum_jsonrpc, __MODULE__)[:debug_trace_transaction_timeout]
 
+    tracer =
+      case Application.get_env(:ethereum_jsonrpc, __MODULE__)[:tracer] do
+        "js" -> @tracer
+        "call_tracer" -> "callTracer"
+      end
+
     request(%{
       id: id,
       method: "debug_traceTransaction",
-      params: [hash_data, %{tracer: @tracer, timeout: debug_trace_transaction_timeout}]
+      params: [hash_data, %{tracer: tracer, timeout: debug_trace_transaction_timeout}]
     })
   end
 
@@ -169,6 +175,7 @@ defmodule EthereumJSONRPC.Geth do
 
     internal_transaction_params =
       calls
+      |> prepare_calls()
       |> Stream.with_index()
       |> Enum.map(fn {trace, index} ->
         Map.merge(trace, %{
@@ -213,6 +220,128 @@ defmodule EthereumJSONRPC.Geth do
       })
 
     {:error, annotated_error}
+  end
+
+  defp prepare_calls(calls) do
+    case Application.get_env(:ethereum_jsonrpc, __MODULE__)[:tracer] do
+      "call_tracer" -> calls |> parse_call_tracer_calls() |> Enum.reverse()
+      "js" -> calls
+    end
+  end
+
+  defp parse_call_tracer_calls(calls, acc \\ [], trace_address \\ [])
+  defp parse_call_tracer_calls([], acc, _trace_address), do: acc
+
+  defp parse_call_tracer_calls(
+         %{
+           "type" => "CREATE",
+           "from" => from,
+           "to" => to,
+           "gas" => gas,
+           "gasUsed" => gas_used,
+           "input" => input,
+           "output" => output
+         } = call,
+         acc,
+         _trace_address
+       ) do
+    formatted_call = %{
+      "type" => "create",
+      "from" => from,
+      "createdContractAddressHash" => to,
+      "value" => Map.get(call, "value", "0x0"),
+      "gas" => gas,
+      "gasUsed" => gas_used,
+      "init" => input,
+      "createdContractCode" => output,
+      "traceAddress" => []
+    }
+
+    parse_call_tracer_calls(Map.get(call, "calls", []), [formatted_call | acc])
+  end
+
+  defp parse_call_tracer_calls(
+         %{
+           "type" => type,
+           "from" => from,
+           "to" => to,
+           "gas" => gas,
+           "gasUsed" => gas_used,
+           "input" => input,
+           "output" => output
+         } = call,
+         acc,
+         _trace_address
+       ) do
+    formatted_call = %{
+      "type" => "call",
+      "callType" => String.downcase(type),
+      "from" => from,
+      "to" => to,
+      "input" => input,
+      "output" => output,
+      "traceAddress" => [],
+      "value" => Map.get(call, "value", "0x0"),
+      "gas" => gas,
+      "gasUsed" => gas_used
+    }
+
+    parse_call_tracer_calls(Map.get(call, "calls", []), [formatted_call | acc])
+  end
+
+  defp parse_call_tracer_calls(calls, acc, trace_address) when is_list(calls) do
+    calls
+    |> Stream.with_index()
+    |> Enum.reduce(acc, fn
+      {%{
+         "type" => "CREATE",
+         "from" => from,
+         "to" => to,
+         "gas" => gas,
+         "gasUsed" => gas_used,
+         "input" => input,
+         "output" => output
+       } = call, index},
+      acc ->
+        formatted_call = %{
+          "type" => "create",
+          "from" => from,
+          "createdContractAddressHash" => to,
+          "value" => Map.get(call, "value", "0x0"),
+          "gas" => gas,
+          "gasUsed" => gas_used,
+          "init" => input,
+          "createdContractCode" => output,
+          "traceAddress" => Enum.reverse([index | trace_address])
+        }
+
+        parse_call_tracer_calls(Map.get(call, "calls", []), [formatted_call | acc], [index | trace_address])
+
+      {%{
+         "type" => type,
+         "from" => from,
+         "to" => to,
+         "gas" => gas,
+         "gasUsed" => gas_used,
+         "input" => input,
+         "output" => output
+       } = call, index},
+      acc ->
+        formatted_call = %{
+          "type" => "call",
+          "callType" => String.downcase(type),
+          "from" => from,
+          "to" => to,
+          "input" => input,
+          "output" => output,
+          "traceAddress" => Enum.reverse([index | trace_address]),
+          "value" => Map.get(call, "value", "0x0"),
+          "gas" => gas,
+          "gasUsed" => gas_used
+        }
+
+        parse_call_tracer_calls(Map.get(call, "calls", []), [formatted_call | acc], [index | trace_address])
+    end)
   end
 
   defp reduce_internal_transactions_params(internal_transactions_params) when is_list(internal_transactions_params) do
