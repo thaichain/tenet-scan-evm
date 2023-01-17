@@ -65,24 +65,35 @@ defmodule EthereumJSONRPC.Geth do
     end)
   end
 
-  @tracer_path "priv/js/ethereum_jsonrpc/geth/debug_traceTransaction/tracer.js"
-  @external_resource @tracer_path
-  @tracer File.read!(@tracer_path)
+  # @tracer_path "priv/js/ethereum_jsonrpc/geth/debug_traceTransaction/tracer.js"
+  # @external_resource @tracer_path
+  # @tracer File.read!(@tracer_path)
 
   defp debug_trace_transaction_request(%{id: id, hash_data: hash_data}) do
     debug_trace_transaction_timeout =
       Application.get_env(:ethereum_jsonrpc, __MODULE__)[:debug_trace_transaction_timeout]
 
-    tracer =
-      case Application.get_env(:ethereum_jsonrpc, __MODULE__)[:tracer] do
-        "js" -> @tracer
-        "call_tracer" -> "callTracer"
-      end
+    # tracer =
+    #   case Application.get_env(:ethereum_jsonrpc, __MODULE__)[:tracer] do
+    #     "js" -> @tracer
+    #     "call_tracer" -> "callTracer"
+    #   end
 
     request(%{
       id: id,
       method: "debug_traceTransaction",
-      params: [hash_data, %{tracer: tracer, timeout: debug_trace_transaction_timeout}]
+      # params: [hash_data, %{tracer: tracer, timeout: debug_trace_transaction_timeout}]
+
+      params: [
+        hash_data,
+        %{
+          enableMemory: true,
+          disableStack: false,
+          disableStorage: false,
+          enableReturnData: true,
+          timeout: debug_trace_transaction_timeout
+        }
+      ]
     })
   end
 

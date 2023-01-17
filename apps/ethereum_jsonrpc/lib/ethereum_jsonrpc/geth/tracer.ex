@@ -127,7 +127,7 @@ defmodule EthereumJSONRPC.Geth.Tracer do
 
     case quantity_to_integer(ret) do
       0 -> Map.put(call, "error", call["error"] || "internal failure")
-      _ -> %{call | "createdContractAddressHash" => "0x" <> String.slice(ret, 24, 40)}
+      _ -> %{call | "createdContractAddressHash" => ret}
     end
   end
 
@@ -164,7 +164,7 @@ defmodule EthereumJSONRPC.Geth.Tracer do
     init =
       log_memory
       |> IO.iodata_to_binary()
-      |> String.slice(quantity_to_integer("0x" <> input_offset) * 2, quantity_to_integer("0x" <> input_length) * 2)
+      |> String.slice(quantity_to_integer(input_offset) * 2, quantity_to_integer(input_length) * 2)
 
     call = %{
       "type" => type,
@@ -199,7 +199,7 @@ defmodule EthereumJSONRPC.Geth.Tracer do
       call = %{
         "type" => "selfdestruct",
         "from" => nil,
-        "to" => "0x" <> String.slice(to, 24, 40),
+        "to" => to,
         "traceAddress" => Enum.reverse([trace_index | trace_address]),
         "gas" => log_gas,
         "gasUsed" => log_gas_cost,
@@ -235,21 +235,23 @@ defmodule EthereumJSONRPC.Geth.Tracer do
           {"0x" <> value, rest}
       end
 
+    IO.inspect(input_offset, label: "input_offset")
+
     input =
       log_memory
       |> IO.iodata_to_binary()
-      |> String.slice(quantity_to_integer("0x" <> input_offset) * 2, quantity_to_integer("0x" <> input_length) * 2)
+      |> String.slice(quantity_to_integer(input_offset) * 2, quantity_to_integer(input_length) * 2)
 
     call = %{
       "type" => "call",
       "callType" => call_type,
       "from" => nil,
-      "to" => "0x" <> String.slice(to, 24, 40),
+      "to" => to,
       "traceAddress" => Enum.reverse(trace_address),
       "input" => "0x" <> input,
       "output" => "0x",
-      "outputOffset" => quantity_to_integer("0x" <> output_offset) * 2,
-      "outputLength" => quantity_to_integer("0x" <> output_length) * 2,
+      "outputOffset" => quantity_to_integer(output_offset) * 2,
+      "outputLength" => quantity_to_integer(output_length) * 2,
       "gas" => 0,
       "gasUsed" => 0,
       "value" => value
