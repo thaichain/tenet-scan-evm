@@ -42,7 +42,18 @@ defmodule Explorer.Chain.Import.Runner.Address.TokenBalances do
       |> Map.put_new(:timeout, @timeout)
       |> Map.put(:timestamps, timestamps)
 
-    Multi.run(multi, :address_token_balances, fn repo, _ ->
+    block_numbers = Enum.map(changes_list, & &1.block_number)
+
+    multi
+    |> Multi.run(:delete_address_token_balances, fn repo, _ ->
+      Instrumenter.block_import_stage_runner(
+        fn -> delete_address_token_balances(repo, block_numbers, insert_options) end,
+        :block_referencing,
+        :token_blances,
+        :delete_address_token_balances
+      )
+    end)
+    |> Multi.run(:address_token_balances, fn repo, _ ->
       Instrumenter.block_import_stage_runner(
         fn -> insert(repo, changes_list, insert_options) end,
         :block_referencing,
@@ -54,6 +65,45 @@ defmodule Explorer.Chain.Import.Runner.Address.TokenBalances do
 
   @impl Import.Runner
   def timeout, do: @timeout
+
+  defp delete_address_token_balances(repo, block_numbers, %{timeout: timeout}) do
+    ordered_query =
+      from(tb in TokenBalance,
+        where: tb.block_number in ^block_numbers,
+        select: map(tb, [:address_hash, :token_contract_address_hash, :token_id, :block_number]),
+        # Enforce TokenBalance ShareLocks order (see docs: sharelocks.md)
+        order_by: [
+          tb.token_contract_address_hash,
+          tb.token_id,
+          tb.address_hash,
+          tb.block_number
+        ],
+        lock: "FOR UPDATE"
+      )
+
+    query =
+      from(tb in TokenBalance,
+        select: map(tb, [:address_hash, :token_contract_address_hash, :block_number]),
+        inner_join: ordered_address_token_balance in subquery(ordered_query),
+        on:
+          ordered_address_token_balance.address_hash == tb.address_hash and
+            ordered_address_token_balance.token_contract_address_hash ==
+              tb.token_contract_address_hash and
+            ((is_nil(ordered_address_token_balance.token_id) and is_nil(tb.token_id)) or
+               (ordered_address_token_balance.token_id == tb.token_id and
+                  not is_nil(ordered_address_token_balance.token_id) and not is_nil(tb.token_id))) and
+            ordered_address_token_balance.block_number == tb.block_number
+      )
+
+    try do
+      {_count, deleted_address_token_balances} = repo.delete_all(query, timeout: timeout)
+
+      {:ok, deleted_address_token_balances}
+    rescue
+      postgrex_error in Postgrex.Error ->
+        {:error, %{exception: postgrex_error, block_numbers: block_numbers}}
+    end
+  end
 
   @spec insert(Repo.t(), [map()], %{
           optional(:on_conflict) => Import.Runner.on_conflict(),

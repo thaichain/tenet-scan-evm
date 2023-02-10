@@ -137,8 +137,7 @@ defmodule Indexer.Fetcher.EmptyBlocksSanitizer do
       where: block.consensus == true,
       order_by: [asc: block.hash],
       limit: ^limit,
-      offset: 1000,
-      lock: "FOR NO KEY UPDATE"
+      offset: 1000
     )
   end
 
