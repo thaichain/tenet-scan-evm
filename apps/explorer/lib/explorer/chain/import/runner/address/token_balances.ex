@@ -42,7 +42,10 @@ defmodule Explorer.Chain.Import.Runner.Address.TokenBalances do
       |> Map.put_new(:timeout, @timeout)
       |> Map.put(:timestamps, timestamps)
 
-    block_numbers = Enum.map(changes_list, & &1.block_number)
+    block_numbers =
+      changes_list
+      |> Enum.map(& &1.block_number)
+      |> Enum.uniq()
 
     multi
     |> Multi.run(:delete_address_token_balances, fn repo, _ ->
