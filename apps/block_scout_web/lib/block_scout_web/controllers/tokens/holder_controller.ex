@@ -6,7 +6,7 @@ defmodule BlockScoutWeb.Tokens.HolderController do
 
   alias BlockScoutWeb.{AccessHelpers, Controller}
   alias BlockScoutWeb.Tokens.HolderView
-  alias Explorer.{Chain, Market}
+  alias Explorer.Chain
   alias Explorer.Chain.Address
   alias Phoenix.View
 
@@ -68,7 +68,7 @@ defmodule BlockScoutWeb.Tokens.HolderController do
         conn,
         "index.html",
         current_path: Controller.current_full_path(conn),
-        token: Market.add_price(token),
+        token: token,
         counters_path: token_path(conn, :token_counters, %{"id" => Address.checksum(address_hash)}),
         tags: get_address_tags(address_hash, current_user(conn))
       )
