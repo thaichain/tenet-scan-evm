@@ -14,5 +14,5 @@ lib/phoenix/router.ex:324
 lib/phoenix/router.ex:402
 lib/explorer/smart_contract/reader.ex:435
 lib/indexer/fetcher/token_total_supply_on_demand.ex:16
-lib/explorer/exchange_rates/source.ex:116
-lib/explorer/exchange_rates/source.ex:119
+lib/explorer/exchange_rates/source.ex:122
+lib/explorer/exchange_rates/source.ex:125
