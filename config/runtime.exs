@@ -613,6 +613,10 @@ config :indexer,
   optimism_rpc_l1: System.get_env("INDEXER_OPTIMISM_RPC_L1"),
   optimism_portal_l1: System.get_env("INDEXER_OPTIMISM_PORTAL_L1")
 
+config :indexer, Indexer.Fetcher.OptimismDeposit,
+  start_block_l1: System.get_env("INDEXER_OPTIMISM_DEPOSITS_START_BLOCK_L1"),
+  optimism_portal: System.get_env("INDEXER_OPTIMISM_DEPOSITS_OPTIMISM_PORTAL_L1")
+
 config :indexer, Indexer.Fetcher.OptimismOutputRoot,
   start_block_l1: System.get_env("INDEXER_OPTIMISM_OUTPUT_ROOTS_START_BLOCK_L1"),
   output_oracle: System.get_env("INDEXER_OPTIMISM_OUTPUT_ORACLE_L1")
