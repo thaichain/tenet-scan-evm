@@ -121,7 +121,7 @@ $navbar-logo-width: 203 !default;
     font-size: 17px;
     line-height: 17px;
     height: 100%;
-    padding: 14.5px 20px;
+    padding: 7px 20px;
     position: relative;
     width: 100%;
     z-index: 1;
@@ -148,12 +148,15 @@ $navbar-logo-width: 203 !default;
     }
 
     @include media-breakpoint-up(xl) {
+      padding: 10px 20px;
       width: 290px;
     }
     @media (min-width: 1366px) {
+       padding: 10px 20px;
       width: 380px;
     }
     @media (min-width: 1540px) {
+       padding: 10px 20px;
       width: 550px;
     }
   }
