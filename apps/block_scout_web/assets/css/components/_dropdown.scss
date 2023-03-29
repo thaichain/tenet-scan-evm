@@ -4,10 +4,9 @@ $dropdown-menu-item-hover-background: #313131 !default;
 
 // These styles extend the default Bootstrap styles
 .dropdown-menu {
-  border: 1px solid #e2e5ec;
+  border: 1px solid #7E87A1;
   border-radius: 0 0 2px 2px !important;
   background-color: black;
-  border-top: none;
   box-shadow: $box-shadow;
   padding: 0;
   width: 100%;
@@ -46,7 +45,7 @@ $dropdown-menu-item-hover-background: #313131 !default;
     &:hover,
     &:focus {
       background-color: $dropdown-menu-item-hover-background;
-      color: $dropdown-menu-item-hover-color;
+      color: $dropdown-menu-item-hover-color !important;
 
       .external-link-icon {
         path {
