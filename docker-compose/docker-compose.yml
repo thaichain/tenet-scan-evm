@@ -22,6 +22,12 @@ services:
       context: ..
       dockerfile: ./docker/Dockerfile
       args:
+        COIN: 'TENET'
+        COIN_NAME: 'TENET'
+        NETWORK_PATH: '/'
+        CHAIN_ID: "0x1a645"
+        JSON_RPC: "http://64.225.71.63:8545/"
+        SUBNETWORK: "TENET"
         CACHE_EXCHANGE_RATES_PERIOD: ""
         DISABLE_READ_API: "false"
         DISABLE_WEBAPP: "false"
@@ -40,6 +46,22 @@ services:
       - 'host.docker.internal:host-gateway'
     env_file:
       -  ./envs/common-blockscout.env
+    environment:
+      COIN: 'TENET'
+      COIN_NAME: 'TENET'
+      ETHEREUM_JSONRPC_HTTP_URL: "http://64.225.71.63:8545/"
+      ETHEREUM_JSONRPC_TRACE_URL: "http://64.225.71.63:8545/"
+      SUBNETWORK: "TENET"
+      DATABASE_URL: "postgresql://postgres:123@db:5432/blockscout"
+      HIDE_BLOCK_MINER: 'true'
+      INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER: 'false'
+      INDEXER_DISABLE_PENDING_TRANSACTIONS_FETCHER: 'false'
+      INDEXER_DISABLE_ADDRESS_COIN_BALANCE_FETCHER: 'false'
+      NETWORK_PATH: '/'
+      CHAIN_ID: "0x1a645"
+      JSON_RPC: "http://64.225.71.63:8545/"
+      SECRET_KEY_BASE: "7a075544915b5df8b670773cbb13246031acdb1fd84d9b071514b146b9f53441"
+      DISPLAY_TOKEN_ICONS: 'true'
     ports:
       - 4000:4000
     volumes:
