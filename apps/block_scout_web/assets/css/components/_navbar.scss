@@ -1,59 +1,47 @@
 // Default variables
-$header-background-color: #fff !default;
-$header-links-color: #828ba0 !default;
-$header-links-color-active: #333 !default;
+$header-background-color: #010312 !default;
+$header-links-color: #7E87A1 !default;
+$header-links-color-active: #ccd1dc !default;
 $header-icon-color: $header-links-color !default;
 $header-icon-color-hover: $secondary !default;
 $header-icon-border-color-hover: $secondary !default;
 $header-toggler-icon: "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{transparentize($primary, 0.5)}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E" !default;
-$header-textfield-text-color: $header-links-color !default;
-$header-textfield-background-color: #f5f6fa !default;
+$header-textfield-text-color: #FFFFFF !default;
+$header-textfield-background-color: #3C4D8D !default;
 $header-textfield-magnifier-color: $header-links-color !default;
 $header-link-horizontal-padding: 0.71rem;
 $navbar-logo-height: auto !default;
-$navbar-logo-width: 100% !default;
+$navbar-logo-width: 203 !default;
 
 .navbar.navbar-primary {
   background-color: $header-background-color;
   position: relative;
   z-index: 100;
+  padding: 16px 18px !important;
 
   .nav-item {
-    font-size: 14px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
   }
 
   .navbar-nav {
-
+    margin-left: 50px;
     .nav-submenu {
       padding: 10px 20px;
-      color: $header-links-color; 
+      color: $header-links-color;
     }
-    
+
     .nav-link {
       outline: none;
       align-items: center;
       color: $header-links-color;
       display: flex;
-      font-size: 14px;
+      font-size: 16px;
+      line-height: 16px;
+      font-weight: 400;
       position: relative;
       transition: $transition-cont;
-
-      &:before {
-        background-color: $header-icon-border-color-hover;
-        border-radius: 0 0 4px 4px;
-        content: "";
-        display: block;
-        height: 0.25rem;
-        left: 50%;
-        opacity: 0;
-        position: absolute;
-        top: -10px;
-        transform: translateX(-50%);
-        transition: $transition-cont;
-        width: calc(
-          100% - #{$header-link-horizontal-padding} - #{$header-link-horizontal-padding}
-        );
-      }
 
       &.active,
       &:hover {
@@ -81,6 +69,7 @@ $navbar-logo-width: 100% !default;
         margin-right: 0.71em;
         position: relative;
         top: -1px;
+        padding: 0 24px;
 
         path {
           fill: $header-icon-color;
@@ -126,16 +115,17 @@ $navbar-logo-width: 100% !default;
   }
 
   .form-control {
-    background: $header-textfield-background-color;
-    border-color: $header-textfield-background-color;
+    background: transparent;
+    border: 1px solid $header-textfield-background-color;
     color: $header-textfield-text-color;
-    font-size: 14px;
+    font-size: 17px;
+    line-height: 17px;
     height: 100%;
-    padding-left: 38px;
-    padding-right: 8px;
+    padding: 14.5px 20px;
     position: relative;
     width: 100%;
     z-index: 1;
+    border-radius: 10px;
 
     &[placeholder]{
       text-overflow: ellipsis !important;
@@ -272,6 +262,9 @@ $navbar-logo-width: 100% !default;
     padding-left: $header-link-horizontal-padding;
     padding-right: $header-link-horizontal-padding;
   }
+  .navbar-nav {
+    margin-left: 50px;
+  }
 }
 
 .add-border {
@@ -279,7 +272,7 @@ $navbar-logo-width: 100% !default;
 }
 
 .navbar-collapse {
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-start;
   flex-shrink: 0;
   @media (min-width: 992px) {
