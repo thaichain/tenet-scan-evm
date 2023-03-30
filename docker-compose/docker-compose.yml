@@ -26,7 +26,7 @@ services:
         COIN_NAME: 'TENET'
         NETWORK_PATH: '/'
         CHAIN_ID: "0x1a645"
-        JSON_RPC: "http://64.225.71.63:8545/"
+        JSON_RPC: "https://rpc.testnet.step.network/"
         SUBNETWORK: "TENET"
         CACHE_EXCHANGE_RATES_PERIOD: ""
         DISABLE_READ_API: "false"
@@ -49,8 +49,8 @@ services:
     environment:
       COIN: 'TENET'
       COIN_NAME: 'TENET'
-      ETHEREUM_JSONRPC_HTTP_URL: "http://64.225.71.63:8545/"
-      ETHEREUM_JSONRPC_TRACE_URL: "http://64.225.71.63:8545/"
+      ETHEREUM_JSONRPC_HTTP_URL: "https://rpc.testnet.step.network/"
+      ETHEREUM_JSONRPC_TRACE_URL: "https://rpc.testnet.step.network/"
       SUBNETWORK: "TENET"
       DATABASE_URL: "postgresql://postgres:123@db:5432/blockscout"
       HIDE_BLOCK_MINER: 'true'

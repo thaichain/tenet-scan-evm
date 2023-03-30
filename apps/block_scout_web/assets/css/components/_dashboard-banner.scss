@@ -276,13 +276,27 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
     background: #121526;
     border-radius: 10px;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &::before {
       display: none !important;
     }
+
+    .dashboard-banner-network-stats-label {
+      font-size: 37px !important;
+      line-height: 37px !important;
+      color: #E2E8F1 !important;
+    }
+    .dashboard-banner-network-stats-value {
+      font-size: 37px !important;
+      line-height: 37px !important;
+      color: #E2E8F1 !important;
+    }
   }
 
-  .dashboard-banner-network-stats-value {
 
-  }
+
+
 }
