@@ -19,7 +19,7 @@ $tile-body-a-color: #5959d8 !default;
 
 @mixin generate-tile-block($prefix, $color, $label-color: false) {
   &#{ $prefix } {
-    border-left: 4px solid $color;
+
 
     .tile-transaction-type-block {
       a {
@@ -117,19 +117,22 @@ $tile-body-a-color: #5959d8 !default;
 }
 
 .tile-bottom-contents {
-  background-color: #f6f7f9;
-  font-size: 12px;
-  line-height: 1.2;
-  padding: 0.8rem 1rem;
+  background-color: transparent;
+  font-size: 17px;
+  line-height: 17px;
+  padding: 0 17px 17px;
+  color: #E2E8F1 !important;
 }
 
 .tile-transactions {
-  color: #a3a9b5;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 10px;
+  color: #E2E8F1 !important;
+  font-size: 17px;
+  line-height: 17px;
   text-align: left;
+
+  .light-text {
+      color: #7E87A1 !important;
+    }
 }
 
 .tile-badge {
@@ -228,9 +231,7 @@ $tile-body-a-color: #5959d8 !default;
     $tile-type-emission-reward-color
   );
   @include generate-tile-block(
-    ".tile-type-transaction",
-    $tile-type-transaction-color
-  );
+    ".tile-type-transaction", #74E0A9);
   @include generate-tile-block(
     ".tile-type-contract-call",
     $tile-type-contract-call-color
@@ -287,10 +288,12 @@ $tile-body-a-color: #5959d8 !default;
   &.tile-type-block {
     max-width: 100%;
     .tile-title {
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 12px;
-      padding: 1rem 1rem 0 1rem;
+      font-weight: 400;
+      font-size: 37px;
+      line-height: 37px;
+      margin-bottom: 30px;
+      padding: 16px;
+      color: #E2E8F1;
     }
   }
 
@@ -348,13 +351,11 @@ $tile-body-a-color: #5959d8 !default;
 .card-chain-blocks {
   .card-body {
     .col-lg-3 {
-      @include media-breakpoint-down(lg) {
-        padding-left: 6px;
-        padding-right: 6px;
-      }
+        padding-left: 3px;
+        padding-right: 3px;
     }
-    .tile-type-block {  
-      overflow: hidden; 
+    .tile-type-block {
+      overflow: hidden;
     }
     .row {
       @include media-breakpoint-down(lg) {
