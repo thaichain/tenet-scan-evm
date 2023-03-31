@@ -78,11 +78,11 @@ $tile-body-a-color: #5959d8 !default;
 .tile-transaction-type-block {
   align-items: center;
   bottom: -17px;
-  justify-content: center;
   margin-left: -1px;
   margin-top: -34px;
   padding: 0 5px;
   position: relative;
+  flex-direction: row !important;
 
   @include media-breakpoint-down(sm) {
     align-items: flex-start;

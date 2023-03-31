@@ -252,6 +252,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   height: 100%;
   width: 100%;
   max-width: 235px;
+  min-width: 235px;
 
   @include media-breakpoint-down(lg) {
     grid-template-columns: 1fr;
@@ -264,6 +265,10 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   @media (max-width: 1200px) {
     grid-template-columns: 1fr 1fr;
     max-width: 100%;
+
+    .dashboard-banner-network-stats-item {
+      max-width: 100% !important;
+    }
   }
 
   @include media-breakpoint-down(md) {
