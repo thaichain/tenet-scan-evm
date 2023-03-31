@@ -13,7 +13,7 @@ $tile-type-api-documentation-color: $primary !default;
 $tile-type-progress-bar-color: $primary !default;
 $tile-status-error-reason: #ff7986 !default;
 $tile-status-awaiting-internal-transactions: $warning !default;
-$tile-padding: 1rem;
+$tile-padding: 16px;
 $tile-title-color: #E2E8F1 !default;
 $tile-body-a-color: #5959d8 !default;
 
@@ -177,6 +177,8 @@ $tile-body-a-color: #5959d8 !default;
   max-height: 140px;
   max-width: 140px;
 }
+
+.
 
 .tile {
   span[data-address-hash] {
@@ -344,6 +346,30 @@ $tile-body-a-color: #5959d8 !default;
     .progress-bar {
       background-color: $tile-type-progress-bar-color;
       border-radius: 2px;
+    }
+  }
+
+
+
+  //StepScan redesign
+  .tile-body-transactions {
+
+    .tile-transaction-block-topper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tile-transaction-block-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    @media (max-width: 768px) {
+      .tile-transaction-block-topper, .tile-transaction-block-footer {
+        flex-direction: column;
+      }
     }
   }
 }
