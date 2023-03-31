@@ -44,7 +44,7 @@ $btn-contract-color: $secondary;
 $tile-body-a-color: $secondary;
 $tile-type-block-color: $secondary;
 $tile-type-progress-bar-color: $secondary;
-a.tile-title { color: #E2E8F1 !important; }
+a.tile-title { color: $secondary !important; } #E2E8F1
 
 // card
 $card-background-1: $secondary;

@@ -14,7 +14,7 @@ $tile-type-progress-bar-color: $primary !default;
 $tile-status-error-reason: #ff7986 !default;
 $tile-status-awaiting-internal-transactions: $warning !default;
 $tile-padding: 16px;
-$tile-title-color: #E2E8F1 !default;
+$tile-title-color: #333 !default;
 $tile-body-a-color: #5959d8 !default;
 
 @mixin generate-tile-block($prefix, $color, $label-color: false) {

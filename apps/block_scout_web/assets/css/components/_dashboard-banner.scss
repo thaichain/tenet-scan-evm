@@ -25,7 +25,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   padding: 0;
   position: relative;
   height: 370px;
-  background: #010313 !important;
+  //background: #010313 !important;
   @include media-breakpoint-down(sm) {
       height: auto;
   }
@@ -68,7 +68,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   flex-grow: 1;
   padding: 0;
   border-radius: 10px;
-  background-color: #121424;
+  //background-color: #121424;
 
   @include media-breakpoint-up(md) {
     min-width: 500px;
@@ -290,7 +290,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   @include stats-item($dashboard-stats-item-border-color, $dashboard-stats-item-label-color, $dashboard-stats-item-value-color);
 
   .dashboard-banner-network-stats-item {
-    background: #121526;
+    //background: #121526;
     border-radius: 10px;
     padding: 15px;
     display: flex;
@@ -305,7 +305,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
     .dashboard-banner-network-stats-label {
       font-size: 17px !important;
       line-height: 17px !important;
-      color: #E2E8F1 !important;
+      //color: #E2E8F1 !important;
       font-weight: 400;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -314,7 +314,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
 
       font-size: 34px !important;
       line-height: 34px !important;
-      color: #E2E8F1 !important;
+      //color: #E2E8F1 !important;
       font-weight: 400;
       overflow: hidden;
       text-overflow: ellipsis;
