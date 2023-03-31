@@ -1,8 +1,8 @@
-$body-dark: #1c1d31; // body background
+$body-dark: #010312; // body background
 $dark-bg: #22223a; // hero shade
 $dark-light-bg: #282945; // pills bg shade
 $dark-light: #313355; // tile light top share
-$labels-dark: #8a8dba; // header nav, labels
+$labels-dark: #E2E8F1; // header nav, labels
 $dark-stakes-banned-background: #3e314c;
 
 // Switcher
@@ -36,19 +36,21 @@ $dark-stakes-banned-background: #3e314c;
 	color: #fff;
 
 	// navbar
-	.navbar.navbar-primary {
-		background-color: $dark-light-bg;
+	.navbar.navbar-primary  {
+		background-color: $dark-bg;
 		.input-group-text {
 			&.border {
 				background-color: $dark-light-bg;
 			}
 		}
-		.nav-submenu {
-			color: $labels-dark;
+		.nav-submenu, .nav-link {
+			color: #7E87A1;
+		}
+		.nav-link {
+
 		}
 	}
 	.navbar-brand .navbar-logo {
-		filter: brightness(0) invert(1);
 	}
 	.navbar.navbar-primary .navbar-nav .nav-link {
 		color: $labels-dark;
@@ -70,11 +72,16 @@ $dark-stakes-banned-background: #3e314c;
 	}
 	.navbar.navbar-primary .form-control {
 		background-color: $dark-bg;
-		border-color: $dark-bg;
-		color: #fff;
+		border-color: #f5f6fa;
+		color: #828ba0;
 		&::placeholder {
 			color: $labels-dark;
 		}
+	}
+	.form-control {
+		color: #FFFFFF !important;
+		border-color: #3C4D8D;
+		background: #3C4D8D !important;
 	}
 	.navbar.navbar-primary .navbar-toggler .navbar-toggler-icon {
 		filter: invert(1);
@@ -99,21 +106,34 @@ $dark-stakes-banned-background: #3e314c;
 
 	// hero stats
 
-	.layout-container .dashboard-banner-container {
+	.layout-container  {
 		background-image: none;
-		background-color: $dark-bg !important;
+		//background-color: $dark-bg !important;
 	}
+	.dashboard-banner-container {
+		background: $body-dark  !important;
+	}
+
+	.dashboard-banner-network-graph {
+		background-color: #121424;
+	}
+
 	.dashboard-banner-network-plain-container,
 	.dashboard-banner-network-plain-container::after {
-		background-color: $dark-light-bg;
+
 	}
 	.dashboard-banner-network-stats-label,
 	.dashboard-banner-chart-legend .dashboard-banner-chart-legend-label {
 		color: $labels-dark;
 	}
-	.dashboard-banner-network-stats-item::before {
-		background-color: $dark-secondary;
+	.dashboard-banner-network-stats-item {
+		background: #121526;
+
+		.dashboard-banner-network-stats-label, .dashboard-banner-network-stats-value {
+			color: #E2E8F1;
+		}
 	}
+
 	.dashboard-banner-chart-legend .dashboard-banner-chart-legend-item {
 		&.price-per-day {
 			&::before {
@@ -146,8 +166,29 @@ $dark-stakes-banned-background: #3e314c;
 	}
 
 	.card {
-		background-color: $dark-light-bg;
-		box-shadow: 0 0 30px 0 rgba(23, 24, 41, 0.5);
+		//background-color: $dark-light-bg;
+		box-shadow: none !important;
+		.tile {
+			background: #111324 !important;
+		}
+		.card-body {
+			.card-title {
+				color: #E2E8F1 !important;
+			}
+
+			..transactions-list {
+				background: #111324 !important;
+			}
+
+		}
+
+		.card-body-transactions {
+			.tile {
+				background-color: #121525EB !important;
+			}
+		}
+
+
 	}
 
 	.card-header {
@@ -202,9 +243,6 @@ $dark-stakes-banned-background: #3e314c;
 			background-color: transparent;
 		}
 	}
-	.tile-bottom-contents {
-		background-color: $dark-bg;
-	}
 	a.tile-title {
 		color: #E2E8F1 !important;
 	}
@@ -223,6 +261,39 @@ $dark-stakes-banned-background: #3e314c;
 	.cube-animation-title {
 		color: $labels-dark;
 	}
+	.tile-body {
+		.tansfer-hash-label {
+			color: #FFFFFF;
+		}
+
+		.text-truncate {
+			color: #7E87A1 !important;
+		}
+
+		.tile-transaction-block-topper {
+
+		}
+		.tile-transaction-block-footer {
+			.text-truncate {
+				color: #7E87A1 !important;
+			}
+			a {
+				color: #7E87A1 !important;
+				text-decoration: underline;
+			}
+			.fee-wrapper {
+				&:first-child {
+					color: white;
+				}
+				.tile-title-special {
+					color: #7E87A1;
+					padding-left: 15px;
+					border-left: 1px solid white;
+				}
+			}
+		}
+	}
+
 	.tile .tile-body a,
 	.tile a:hover,
 	.tile span[data-address-hash],
@@ -255,8 +326,6 @@ $dark-stakes-banned-background: #3e314c;
 
 	.btn-line {
 		background-color: transparent;
-		border-color: $dark-primary;
-		color: $dark-primary;
 		&:hover {
 			border-color: $dark-primary;
 			background-color: $dark-primary;
@@ -445,7 +514,7 @@ $dark-stakes-banned-background: #3e314c;
 	//coin dropdown
 	.token-balance-dropdown.dropdown-menu {
 		border-color: $dark-light !important;
-		box-shadow: 0 0 30px 0 rgba(23, 24, 41, 0.5) !important;
+		box-shadow: none !important;
 	}
 	.token-balance-dropdown .dropdown-search-icon path {
 		fill: $labels-dark;
@@ -583,7 +652,9 @@ $dark-stakes-banned-background: #3e314c;
 
 	.input-group:not(.input-status-error) .form-control:focus ~ .input-group-prepend.last {
 		.input-group-text {
-		  border-color: $dark-primary;
+			&.border {
+				background-color:#3C4D8D;
+			}
 		}
 	}
 
@@ -592,6 +663,7 @@ $dark-stakes-banned-background: #3e314c;
 			background: $dark-light;
 			border-color: $dark-light;
 			color: $labels-dark;
+
 		}
 	}
 
@@ -1118,6 +1190,11 @@ $dark-stakes-banned-background: #3e314c;
 		top: 14%;
 		color: $dark-primary;
 	}
+
+	.nav-link:hover {
+		color: #ccd1dc !important;
+	}
+
 }
 .dark-theme-applied .confirmations-label:after {
     border-left: .9rem solid $dark-light-bg;

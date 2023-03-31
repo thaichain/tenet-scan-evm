@@ -6,7 +6,7 @@
   <div class="column tile-body tile-body-transactions" data-selector="token-transfers-toggle" data-test="chain_transaction">
      <div class="tile-transaction-block-topper">
         <!-- Color Block -->
-        <div class="tile-transaction-type-block col-md-2 d-flex flex-row flex-md-column">
+        <div class="tile-transaction-type-block colored-type-block">
               <div>
                 <%= if error_in_internal_tx do %>
                   <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html", text: gettext("Error in internal transactions"), additional_classes: ["color-inherit"] %>
@@ -22,15 +22,15 @@
                     <span class="loading-spinner-block-2"></span>
                   </div>
                 <% end %>
-                <%= formatted_result(status) %>
+                <%= "– " +  formatted_result(status) %>
               </span>
         </div>
         <!-- Block info -->
-            <div class="col-md-3 col-lg-2 d-flex flex-row flex-md-column flex-nowrap justify-content-center text-md-right mt-3 mt-md-0 tile-bottom">
-              <span class="mr-2 mr-md-0 order-1">
+            <div class="block-time-info tile-bottom">
+              <span class="block-info mr-2 mr-md-0 order-1">
                 <%= @transaction |> block_number() |> BlockScoutWeb.RenderHelpers.render_partial() %>
               </span>
-              <span class="mr-2 mr-md-0 order-2" in-tile data-from-now="<%= block_timestamp(@transaction) %>"></span>
+              <span class="time-info mr-2 mr-md-0 order-2" in-tile data-from-now="<%= block_timestamp(@transaction) %>"></span>
               <%= if from_or_to_address?(@transaction, assigns[:current_address]) do %>
                 <span class="mr-2 mr-md-0 order-0 order-md-3">
                   <%= if @transaction.from_address_hash == assigns[:current_address].hash do %>
@@ -74,9 +74,22 @@
               </div>
               </span>
               <span>
+              <span class="tansfer-hash-label">From: </span>
                 <%= @transaction |> BlockScoutWeb.AddressView.address_partial_selector(:from, assigns[:current_address]) |> BlockScoutWeb.RenderHelpers.render_partial() %>
-                &rarr;
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0986 6.33335L5.58824 13.8963L5.05954 13.3713L12.5699 5.80832L13.0986 6.33335Z" fill="#5B68DF"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8945 5.58827L14.8945 15.4981L14.1494 15.4981L14.1494 5.58827L14.8945 5.58827Z" fill="#5B68DF"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2627 4.47059L3.35294 4.47058L3.35294 3.72549L13.2627 3.72549L13.2627 4.47059Z" fill="#5B68DF"/>
+                </svg>
+                <br/>
+                <span class="tansfer-hash-label">To: </span>
                 <%= @transaction |> BlockScoutWeb.AddressView.address_partial_selector(:to, assigns[:current_address]) |> BlockScoutWeb.RenderHelpers.render_partial() %>
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0986 6.33335L5.58824 13.8963L5.05954 13.3713L12.5699 5.80832L13.0986 6.33335Z" fill="#5B68DF"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8945 5.58827L14.8945 15.4981L14.1494 15.4981L14.1494 5.58827L14.8945 5.58827Z" fill="#5B68DF"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2627 4.47059L3.35294 4.47058L3.35294 3.72549L13.2627 3.72549L13.2627 4.47059Z" fill="#5B68DF"/>
+                </svg>
+
               </span>
               <!-- Transfer -->
               <%= if involves_token_transfers?(@transaction) do %>
@@ -100,8 +113,8 @@
                 <% end %>
               <% end %>
         </div>
-        <div class="d-flex flex-md-row flex-column mt-3 mt-md-0">
-           <span class="tile-title">
+        <div class="fee-wrapper d-flex flex-md-row flex-row mt-3 mt-md-0 ml-3">
+           <span class="tile-title tile-title-special">
               <%= value(@transaction, include_label: false) %> <%= Explorer.coin_name() %>
               </span>
                <span class="ml-0 ml-md-1 text-nowrap">
