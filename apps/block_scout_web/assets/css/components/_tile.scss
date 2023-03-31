@@ -21,6 +21,29 @@ $tile-body-a-color: #5959d8 !default;
   &#{ $prefix } {
 
 
+
+    .tile-transaction-type-block {
+      border: none;
+      color: #7E87A1 !important;
+      font-size: 15px;
+      line-height: 15px;
+      font-weight: 400;
+    }
+
+    .tile-label {
+      color: #E2E8F1;
+      font-size: 27px;
+      line-height: 27px;
+    }
+
+    .tile-status-label {
+      color: $color;
+      font-size: 27px;
+      line-height: 27px;
+    }
+
+
+
     .tile-transaction-type-block {
       a {
         @if ($label-color) {
@@ -31,25 +54,6 @@ $tile-body-a-color: #5959d8 !default;
       }
     }
 
-    .tile-label {
-      @if ($label-color) {
-        color: $label-color;
-      } @else {
-        color: $color;
-      }
-    }
-
-    .tile-status-label {
-      color: inherit;
-    }
-
-    .tile-transaction-type-block {
-      background-color: rgba($color, 0.1);
-      border-bottom: 1px solid $color;
-      border-right: 1px solid $color;
-      border-top: 1px solid $color;
-      color: $color;
-    }
   }
 }
 
@@ -177,8 +181,6 @@ $tile-body-a-color: #5959d8 !default;
   max-height: 140px;
   max-width: 140px;
 }
-
-.
 
 .tile {
   span[data-address-hash] {
@@ -364,6 +366,10 @@ $tile-body-a-color: #5959d8 !default;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+    }
+
+    .text-truncate {
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
