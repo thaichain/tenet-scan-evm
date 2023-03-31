@@ -60,6 +60,11 @@ $card-tab-icon-color-active: #fff !default;
     line-height: 36px;
   }
 
+  @media (max-width: 430px) {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
   &.lg-card-title {
     @media (max-width: 374px) {
       font-size: 13px;
@@ -170,7 +175,7 @@ $card-tab-icon-color-active: #fff !default;
     text-align: center !important;
     background-color: #74E0A9 !important;
     border-radius: 10px !important;
-    font-family: 'Roobert-Regular' !important;
+    font-family: 'Roobert-Regular',sans-serif !important;
     font-style: normal !important;
     font-weight: 400 !important;
     font-size: 17px !important;
@@ -195,7 +200,7 @@ $card-tab-icon-color-active: #fff !default;
 
 .card-body-transactions {
   .btn-line {
-    background-color: #74E0A9 !important;
+    background-color: #5B68DF !important;
     color: #010313 !important;
   }
 }

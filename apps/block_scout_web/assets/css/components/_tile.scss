@@ -14,7 +14,7 @@ $tile-type-progress-bar-color: $primary !default;
 $tile-status-error-reason: #ff7986 !default;
 $tile-status-awaiting-internal-transactions: $warning !default;
 $tile-padding: 1rem;
-$tile-title-color: #333 !default;
+$tile-title-color: #E2E8F1 !default;
 $tile-body-a-color: #5959d8 !default;
 
 @mixin generate-tile-block($prefix, $color, $label-color: false) {
@@ -199,7 +199,7 @@ $tile-body-a-color: #5959d8 !default;
   }
 
   .tile-title {
-    color: $tile-title-color;
+    color: $tile-title-color !important;
     font-size: 12px;
 
     &-hash {
@@ -293,7 +293,7 @@ $tile-body-a-color: #5959d8 !default;
       line-height: 37px;
       margin-bottom: 30px;
       padding: 16px;
-      color: #E2E8F1;
+      color: #E2E8F1 !important;
     }
   }
 

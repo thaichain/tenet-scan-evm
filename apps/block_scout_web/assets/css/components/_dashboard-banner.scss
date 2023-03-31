@@ -34,9 +34,9 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   }
 
   .container {
-    padding: 0 18px !important;
+    padding: 0 15px !important;
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 1380px !important;
     height: 100%;
 
     @include media-breakpoint-down(sm) {
@@ -253,9 +253,11 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   grid-template-columns: 1fr 1fr;
   height: 100%;
   width: 100%;
+  max-width: 235px;
 
   @include media-breakpoint-down(lg) {
     grid-template-columns: 1fr 1fr;
+    width: 100% !important;
   }
 
   @media (max-width: 1200px) {
@@ -268,6 +270,10 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
 
   @include media-breakpoint-down(sm) {
     grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 49%;
   }
 
   @include stats-item($dashboard-stats-item-border-color, $dashboard-stats-item-label-color, $dashboard-stats-item-value-color);
@@ -285,14 +291,38 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
     }
 
     .dashboard-banner-network-stats-label {
-      font-size: 37px !important;
-      line-height: 37px !important;
+      font-size: 34px !important;
+      line-height: 34px !important;
       color: #E2E8F1 !important;
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .dashboard-banner-network-stats-value {
-      font-size: 37px !important;
-      line-height: 37px !important;
+      font-size: 17px !important;
+      line-height: 17px !important;
       color: #E2E8F1 !important;
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-banner-network-stats-label {
+        font-size: 22px !important;
+        line-height: 22px !important;
+      }
+      .dashboard-banner-network-stats-value {
+        font-size: 14px !important;
+        line-height: 14px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-banner-network-stats-label {
+        font-size: 18px !important;
+        line-height: 18px !important;
+      }
     }
   }
 
