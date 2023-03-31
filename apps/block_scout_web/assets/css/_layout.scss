@@ -1,7 +1,13 @@
 @import '~@tarekraafat/autocomplete.js/dist/css/autoComplete.01.css';
 
-@import url('http://db.onlinewebfonts.com/c/6228016f2b172c06410f3a2356d33f6c?family=Roobert-Regular');
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+@font-face {
+  font-family: "Roobert-Regular";
+  src: url("../fonts/Roobert-Regular.woff2");
+}
+
 
 
 //font-family: 'Roobert-Regular', sans-serif;
@@ -12,7 +18,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Roobert-Regular', sans-serif;
+  font-family: Roobert-Regular, sans-serif;
 
 
   main {
