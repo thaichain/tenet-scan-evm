@@ -22,7 +22,7 @@
                     <span class="loading-spinner-block-2"></span>
                   </div>
                 <% end %>
-                <%= "– " +  formatted_result(status) %>
+                <%= formatted_result(status) %>
               </span>
         </div>
         <!-- Block info -->
