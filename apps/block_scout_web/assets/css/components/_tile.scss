@@ -416,10 +416,18 @@ $tile-body-a-color: #5959d8 !default;
         }
         .tile-title-special {
           color: #7E87A1 !important;
-          padding-right: 15px;
+          padding-right: 10px !important;
+          margin-right: 10px !important;
+          padding-left: 0 !important;
           font-size: 17px !important;
           line-height: 17px !important;
-          border-right: 1px solid black;
+          border: none !important;
+          border-right: 1px solid white;
+
+          @media (max-width: 1200px) {
+            font-size: 14px !important;
+            line-height: 14px !important;
+          }
         }
       }
 
@@ -447,14 +455,17 @@ $tile-body-a-color: #5959d8 !default;
 
     .btn-copy-icon-hash {
       padding-left: 10px;
+      cursor: pointer;
     }
 
     .arrow-icon {
       padding-left: 4px;
       margin-top: -3px;
+      width: 21px;
+      height: 21px;
     }
 
-    .tansfer-hash-label {
+    .transfer-hash-label {
       display: inline-block;
       padding-bottom: 10px;
       font-size: 17px;
@@ -611,6 +622,13 @@ $tile-body-a-color: #5959d8 !default;
   }
   100% {
     transform: scaleY(1);
+  }
+}
+
+.tile-type-block {
+  .tile-status-label {
+    display: inline-block;
+    margin-top: -3px;
   }
 }
 

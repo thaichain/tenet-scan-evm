@@ -73,8 +73,8 @@
                 <%= render BlockScoutWeb.AddressView, "_labels.html", tags: tx_tags %>
               </div>
               </span>
-              <span class="tansfer-hash-wrapper">
-              <span class="tansfer-hash-label">From: </span>
+              <span class="transfer-hash-wrapper">
+              <span class="transfer-hash-label">From: </span>
                 <%= @transaction |> BlockScoutWeb.AddressView.address_partial_selector(:from, assigns[:current_address]) |> BlockScoutWeb.RenderHelpers.render_partial() %>
                 <svg width=21" height="21" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0986 6.33335L5.58824 13.8963L5.05954 13.3713L12.5699 5.80832L13.0986 6.33335Z" fill="#5B68DF"/>

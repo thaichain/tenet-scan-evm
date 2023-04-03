@@ -38,17 +38,17 @@ $dark-stakes-banned-background: #3e314c;
 
 	// navbar
 	.navbar.navbar-primary  {
-		background-color: $body-dark !important;
+		background-color: transparent !important;
 		.input-group-text {
 			&.border {
 				background-color: $dark-light-bg;
 			}
 		}
 		.nav-submenu, .nav-link {
-			color: #7E87A1;
+			color: #7E87A1 !important;
 		}
 		.nav-link:hover {
-			color: white;
+			color: white !important;
 		}
 	}
 	.navbar-brand .navbar-logo {
@@ -81,7 +81,7 @@ $dark-stakes-banned-background: #3e314c;
 	}
 	.form-control {
 		color: #FFFFFF !important;
-		background-color: transparent !important;
+		background-color: $body-dark !important;
 	}
 	.navbar.navbar-primary .navbar-toggler .navbar-toggler-icon {
 		//filter: invert(1);
@@ -108,10 +108,10 @@ $dark-stakes-banned-background: #3e314c;
 
 	.layout-container  {
 		background-image: none;
-		background-color: $dark-bg !important;
+		background-color: $body-dark!important;
 	}
 	.dashboard-banner-container {
-		background: $dark-bg  !important;
+		background: transparent  !important;
 	}
 
 	.dashboard-banner-network-graph {
@@ -170,6 +170,7 @@ $dark-stakes-banned-background: #3e314c;
 		box-shadow: none !important;
 		.tile {
 			background: #111324 !important;
+			border: none !important;
 		}
 
 		.tile-type-contract-call{
@@ -265,12 +266,7 @@ $dark-stakes-banned-background: #3e314c;
 	.tile.tile-type-block .tile-transaction-type-block a {
 		color: #fff;
 	}
-	.fade-up-blocks-chain .tile-type-block-animation {
-		background-color: $dark-light;
-		border-top-color: $dark-light;
-		border-right-color: $dark-light;
-		border-bottom-color: $dark-light;
-	}
+
 	.fade-up-blocks-chain .tile-type-block-animation:after {
 		background-color: $dark-light;
 	}
@@ -278,7 +274,7 @@ $dark-stakes-banned-background: #3e314c;
 		color: $labels-dark;
 	}
 	.tile-body {
-		.tansfer-hash-label {
+		.transfer-hash-label {
 			color: #FFFFFF;
 		}
 
@@ -333,9 +329,14 @@ $dark-stakes-banned-background: #3e314c;
 			}
 			.tile-title-special {
 				color: #7E87A1 !important;
-				padding-left: 15px;
 				border-left: 1px solid white;
 			}
+		}
+	}
+
+	.transfer-hash-wrapper {
+		a {
+			color: #7E87A1 !important;
 		}
 	}
 
@@ -1156,6 +1157,25 @@ $dark-stakes-banned-background: #3e314c;
 		}
 		&[aria-selected="true"] {
 			background-color: $dark-primary !important;
+		}
+	}
+
+	.tile-type-block, .fade-up {
+		border: none !important;
+	}
+	.nav-link {
+		color: #7E87A1 !important;
+	}
+	.nav-link:hover {
+		color: white !important;
+	}
+
+	.tile-type-block {
+		.tile-status-label {
+			color: white !important;
+		}
+		.tile-label {
+			color: #7E87A1 !important;
 		}
 	}
 }
