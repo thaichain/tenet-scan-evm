@@ -380,9 +380,12 @@ $tile-body-a-color: #5959d8 !default;
             font-size: 14px;
             line-height: 14px;
             padding: 6px 12px;
-            border: 1px solid #74E0A9;
+            border: 1px solid #74E0A9 !important;
             border-radius: 5px;
-            margin-right: 25px;
+            margin-right: 25px !important;
+            a {
+              color: #74E0A9 !important;
+            }
           }
 
         .time-info {
@@ -412,9 +415,11 @@ $tile-body-a-color: #5959d8 !default;
           color: black;
         }
         .tile-title-special {
-          color: #7E87A1;
-          padding-left: 15px;
-          border-left: 1px solid black;
+          color: #7E87A1 !important;
+          padding-right: 15px;
+          font-size: 17px !important;
+          line-height: 17px !important;
+          border-right: 1px solid black;
         }
       }
 
@@ -430,6 +435,8 @@ $tile-body-a-color: #5959d8 !default;
       text-decoration: underline;
       font-size: 15px;
       line-height: 15px;
+      padding-bottom: 20px;
+
     }
 
     @media (max-width: 768px) {
@@ -443,10 +450,13 @@ $tile-body-a-color: #5959d8 !default;
     }
 
     .arrow-icon {
-      padding-left: 6px;
+      padding-left: 4px;
+      margin-top: -3px;
     }
 
     .tansfer-hash-label {
+      display: inline-block;
+      padding-bottom: 10px;
       font-size: 17px;
       line-height: 17px;
       color: black

@@ -34,10 +34,11 @@ $dark-stakes-banned-background: #3e314c;
 
 .dark-theme-applied {
 	color: #fff;
+	background-color: $body-dark;
 
 	// navbar
 	.navbar.navbar-primary  {
-		background-color: $dark-bg;
+		background-color: $body-dark !important;
 		.input-group-text {
 			&.border {
 				background-color: $dark-light-bg;
@@ -46,11 +47,12 @@ $dark-stakes-banned-background: #3e314c;
 		.nav-submenu, .nav-link {
 			color: #7E87A1;
 		}
-		.nav-link {
-
+		.nav-link:hover {
+			color: white;
 		}
 	}
 	.navbar-brand .navbar-logo {
+
 	}
 	.navbar.navbar-primary .navbar-nav .nav-link {
 		color: $labels-dark;
@@ -71,8 +73,7 @@ $dark-stakes-banned-background: #3e314c;
 		}
 	}
 	.navbar.navbar-primary .form-control {
-		background-color: $dark-bg;
-		border-color: #f5f6fa;
+		background-color: transparent !important;
 		color: #828ba0;
 		&::placeholder {
 			color: $labels-dark;
@@ -80,11 +81,10 @@ $dark-stakes-banned-background: #3e314c;
 	}
 	.form-control {
 		color: #FFFFFF !important;
-		border-color: #3C4D8D;
-		background: #3C4D8D !important;
+		background-color: transparent !important;
 	}
 	.navbar.navbar-primary .navbar-toggler .navbar-toggler-icon {
-		filter: invert(1);
+		//filter: invert(1);
 	}
 
 	// footer
@@ -108,10 +108,10 @@ $dark-stakes-banned-background: #3e314c;
 
 	.layout-container  {
 		background-image: none;
-		//background-color: $dark-bg !important;
+		background-color: $dark-bg !important;
 	}
 	.dashboard-banner-container {
-		background: $body-dark  !important;
+		background: $dark-bg  !important;
 	}
 
 	.dashboard-banner-network-graph {
@@ -273,25 +273,6 @@ $dark-stakes-banned-background: #3e314c;
 		.tile-transaction-block-topper {
 
 		}
-		.tile-transaction-block-footer {
-			.text-truncate {
-				color: #7E87A1 !important;
-			}
-			a {
-				color: #7E87A1 !important;
-				text-decoration: underline;
-			}
-			.fee-wrapper {
-				&:first-child {
-					color: white;
-				}
-				.tile-title-special {
-					color: #7E87A1;
-					padding-left: 15px;
-					border-left: 1px solid white;
-				}
-			}
-		}
 	}
 
 	.tile .tile-body a,
@@ -320,6 +301,26 @@ $dark-stakes-banned-background: #3e314c;
 	}
 	.tile .tile-title-lg:not([data-balance-change-sign]) {
 		color: $dark-primary;
+	}
+
+	.tile-transaction-block-footer {
+		.text-truncate {
+			color: #7E87A1 !important;
+		}
+		a {
+			color: #7E87A1 !important;
+			text-decoration: underline;
+		}
+		.fee-wrapper {
+			&:first-child {
+				color: white;
+			}
+			.tile-title-special {
+				color: #7E87A1 !important;
+				padding-left: 15px;
+				border-left: 1px solid white;
+			}
+		}
 	}
 
 	// btns
@@ -623,7 +624,7 @@ $dark-stakes-banned-background: #3e314c;
 
 	// Form Controlls
 	.form-control {
-		background-color: $dark-light;
+		background-color: transparent !important;
 		border-color: $dark-light;
 		color: #fff;
 		transition: border-color 0.15s ease-in-out;
@@ -1121,7 +1122,7 @@ $dark-stakes-banned-background: #3e314c;
 		  }
 	}
 	.main-search-autocomplete {
-		background-color: $dark-bg !important;
+		background-color: transparent !important;
 		color: #fff !important;
 	}
 	.autocomplete-category {

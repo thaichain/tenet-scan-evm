@@ -181,6 +181,11 @@ $card-tab-icon-color-active: #fff !default;
     font-size: 17px !important;
     line-height: 17px !important;
     color: #010313 !important;
+    transition: all 0.2s linear;
+
+    &:hover {
+      filter: brightness(0.7);
+    }
 
 
     @media (max-width: 960px) {
