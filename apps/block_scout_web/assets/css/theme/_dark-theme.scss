@@ -108,7 +108,7 @@ $dark-stakes-banned-background: #3e314c;
 
 	.layout-container  {
 		background-image: none;
-		background-color: $body-dark!important;
+		background-color: $body-dark !important;
 	}
 	.dashboard-banner-container {
 		background: transparent  !important;
@@ -162,7 +162,7 @@ $dark-stakes-banned-background: #3e314c;
 
 	// main container, layout, cards
 	.layout-container main {
-		background-color: $body-dark;
+		background-color: transparent !important;
 	}
 
 	.card {
@@ -237,9 +237,6 @@ $dark-stakes-banned-background: #3e314c;
 	}
 
 	// Components
-	a {
-		color: $dark-primary;
-	}
 
 	.tile, .tile-code {
 		border-top-color: $dark-light;
@@ -290,10 +287,8 @@ $dark-stakes-banned-background: #3e314c;
 	.tile .tile-body a,
 	.tile a:hover,
 	.tile span[data-address-hash],
-	.tile a[data-test=token_link] { color: $dark-primary; }
-	.fade-up-blocks-chain .tile-type-block-animation .tile-type-line-up {
-		background-color: $dark-primary;
-	}
+	.tile a[data-test=token_link] { color: #7E87A1 !important; }
+
 	.tile.tile-type-block {
 		border-left-color: $dark-primary
 	}
@@ -325,10 +320,10 @@ $dark-stakes-banned-background: #3e314c;
 		}
 		.fee-wrapper {
 			&:first-child {
-				color: white;
+				color: #7E87A1;
 			}
 			.tile-title-special {
-				color: #7E87A1 !important;
+				color: white !important;
 				border-left: 1px solid white;
 			}
 		}
@@ -386,9 +381,7 @@ $dark-stakes-banned-background: #3e314c;
 	// dropdown
 	.dropdown-menu {
 		background-color: $dark-light;
-		border-left-color: $dark-light;
-		border-right-color: $dark-light;
-		border-bottom-color: $dark-light;
+		border: none;
 	}
 
 	.dropdown-item {
@@ -984,7 +977,11 @@ $dark-stakes-banned-background: #3e314c;
 	}
 
 	.stakes-td-link-style {
-		color: $dark-primary;
+		color: #7E87A1 !important;
+	}
+
+	.stakes-td a {
+		color: #7E87A1 !important;
 	}
 
 	.stakes-control-icon path {

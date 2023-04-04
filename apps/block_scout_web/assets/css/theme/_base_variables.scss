@@ -72,12 +72,12 @@ $colors: map-merge(
 );
 
 $primary: $indigo !default;
-$dark-primary: #9b62ff !default;
-$dark-primary-alternate: #9b62ff !default;
+$dark-primary: #5B68DF !default;
+$dark-primary-alternate: #5B68DF !default;
 $secondary: #7dd79f !default;
 $dark-secondary: #87e1a9 !default;
 $tertiary: $purple !default;
-$success: $green !default;
+$success: #74E0A9 !default;
 $info: $cyan !default;
 $warning: $yellow !default;
 $danger: $red !default;
@@ -310,7 +310,7 @@ $lead-font-weight: 300 !default;
 
 $small-font-size: 80% !default;
 
-$text-muted: $gray-500 !default;
+$text-muted: #7E87A1 !default;
 
 $blockquote-small-color: $gray-600 !default;
 $blockquote-font-size: ($font-size-base * 1.25) !default;

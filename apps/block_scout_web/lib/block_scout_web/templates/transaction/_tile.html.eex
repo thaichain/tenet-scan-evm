@@ -82,7 +82,7 @@
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2627 4.47059L3.35294 4.47058L3.35294 3.72549L13.2627 3.72549L13.2627 4.47059Z" fill="#5B68DF"/>
                 </svg>
                 <br/>
-                <span class="tansfer-hash-label">To: </span>
+                <span class="transfer-hash-label">To: </span>
                 <%= @transaction |> BlockScoutWeb.AddressView.address_partial_selector(:to, assigns[:current_address]) |> BlockScoutWeb.RenderHelpers.render_partial() %>
                 <svg width="21" height="21" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0986 6.33335L5.58824 13.8963L5.05954 13.3713L12.5699 5.80832L13.0986 6.33335Z" fill="#5B68DF"/>
@@ -114,12 +114,15 @@
               <% end %>
         </div>
         <div class="fee-wrapper d-flex flex-md-row flex-row mt-3 mt-md-0 ml-3">
-           <span class="tile-title tile-title-special">
+              <span class="tile-title tile-title-special">
               <%= value(@transaction, include_label: false) %> <%= Explorer.coin_name() %>
+              <span class="tile-currency"><%= Explorer.coin_name() %></span>
               </span>
                <span class="ml-0 ml-md-1 text-nowrap">
-               <%= formatted_fee(@transaction, denomination: :ether, include_label: false) %> <%= gettext "TX Fee" %>
-           </span>
+                  <%= formatted_fee(@transaction, denomination: :ether, include_label: false) %>
+                  <span class="tile-currency"> <%= gettext "TX Fee" %></span>
+               </span>
+
         </div>
      </div>
   </div>
