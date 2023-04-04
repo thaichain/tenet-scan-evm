@@ -76,7 +76,7 @@ $dark-stakes-banned-background: #3e314c;
 		background-color: transparent !important;
 		color: #828ba0;
 		&::placeholder {
-			color: $labels-dark;
+			color: #7E87A1 !important;
 		}
 	}
 	.form-control {
@@ -635,7 +635,7 @@ $dark-stakes-banned-background: #3e314c;
 	// Form Controlls
 	.form-control {
 		background-color: transparent !important;
-		border-color: $dark-light;
+		border-color: $body-dark !important;
 		color: #fff;
 		transition: border-color 0.15s ease-in-out;
 
@@ -647,8 +647,6 @@ $dark-stakes-banned-background: #3e314c;
 			color: $labels-dark;
 		}
 		&:focus {
-			background-color: $dark-light;
-			border-color: $dark-primary;
 			color: #fff;
 		}
 
