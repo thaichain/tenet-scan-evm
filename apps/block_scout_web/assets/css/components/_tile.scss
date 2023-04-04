@@ -421,7 +421,7 @@ $tile-body-a-color: #5959d8 !default;
       .fee-wrapper {
         font-size: 17px !important;
         line-height: 17px !important;
-        &:first-child {
+        .tile-tile-fee {
           color: black;
         }
         .tile-title-special {

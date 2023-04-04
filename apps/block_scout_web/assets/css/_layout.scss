@@ -20,6 +20,7 @@
   min-height: 100vh;
   font-family: Roobert-Regular, sans-serif;
   position: relative;
+  z-index: 0;
 
   .bubble-icon {
     position: absolute;
@@ -33,7 +34,7 @@
     position: absolute;
     z-index: -1;
     right: 0;
-    top: 800px;
+    top: 600px;
   }
 
 

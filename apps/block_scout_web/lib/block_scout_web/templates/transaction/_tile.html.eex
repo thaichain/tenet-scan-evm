@@ -118,7 +118,7 @@
               <%= value(@transaction, include_label: false) %> <%= Explorer.coin_name() %>
               <span class="tile-currency"><%= Explorer.coin_name() %></span>
               </span>
-               <span class="ml-0 ml-md-1 text-nowrap">
+               <span class="ml-0 ml-md-1 text-nowrap tile-tile-fee">
                   <%= formatted_fee(@transaction, denomination: :ether, include_label: false) %>
                   <span class="tile-currency"> <%= gettext "TX Fee" %></span>
                </span>

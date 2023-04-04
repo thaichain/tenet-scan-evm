@@ -81,7 +81,6 @@ $dark-stakes-banned-background: #3e314c;
 	}
 	.form-control {
 		color: #FFFFFF !important;
-		background-color: $body-dark !important;
 	}
 	.navbar.navbar-primary .navbar-toggler .navbar-toggler-icon {
 		//filter: invert(1);
@@ -318,14 +317,14 @@ $dark-stakes-banned-background: #3e314c;
 			color: #7E87A1 !important;
 			text-decoration: underline;
 		}
-		.fee-wrapper {
-			&:first-child {
-				color: #7E87A1;
-			}
-			.tile-title-special {
-				color: white !important;
-				border-left: 1px solid white;
-			}
+	}
+
+	.fee-wrapper {
+		.tile-tile-fee {
+			color: #7E87A1 !important;
+		}
+		.tile-title-special {
+			color: white !important;
 		}
 	}
 
@@ -634,7 +633,7 @@ $dark-stakes-banned-background: #3e314c;
 
 	// Form Controlls
 	.form-control {
-		background-color: transparent !important;
+		background-color: #111424 !important;
 		border-color: $body-dark !important;
 		color: #fff;
 		transition: border-color 0.15s ease-in-out;
