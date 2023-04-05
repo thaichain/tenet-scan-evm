@@ -13,13 +13,51 @@ $tile-type-api-documentation-color: $primary !default;
 $tile-type-progress-bar-color: $primary !default;
 $tile-status-error-reason: #ff7986 !default;
 $tile-status-awaiting-internal-transactions: $warning !default;
-$tile-padding: 1rem;
+$tile-padding: 16px;
 $tile-title-color: #333 !default;
 $tile-body-a-color: #5959d8 !default;
 
 @mixin generate-tile-block($prefix, $color, $label-color: false) {
   &#{ $prefix } {
-    border-left: 4px solid $color;
+
+
+
+    .tile-transaction-type-block {
+      border: none;
+      color: #7E87A1 !important;
+      font-size: 15px;
+      line-height: 15px;
+      font-weight: 400;
+    }
+
+    .tile-label {
+      color: #E2E8F1;
+      font-size: 27px;
+      line-height: 27px;
+      font-weight: 300;
+      padding-right: 5px;
+      white-space: nowrap;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+
+    .tile-status-label {
+      color: $color;
+      font-size: 27px;
+      line-height: 27px;
+      font-weight: 300;
+      padding-right: 0;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+
+
 
     .tile-transaction-type-block {
       a {
@@ -31,25 +69,6 @@ $tile-body-a-color: #5959d8 !default;
       }
     }
 
-    .tile-label {
-      @if ($label-color) {
-        color: $label-color;
-      } @else {
-        color: $color;
-      }
-    }
-
-    .tile-status-label {
-      color: inherit;
-    }
-
-    .tile-transaction-type-block {
-      background-color: rgba($color, 0.1);
-      border-bottom: 1px solid $color;
-      border-right: 1px solid $color;
-      border-top: 1px solid $color;
-      color: $color;
-    }
   }
 }
 
@@ -74,18 +93,18 @@ $tile-body-a-color: #5959d8 !default;
 .tile-transaction-type-block {
   align-items: center;
   bottom: -17px;
-  justify-content: center;
   margin-left: -1px;
   margin-top: -34px;
   padding: 0 5px;
   position: relative;
+  flex-direction: row !important;
 
   @include media-breakpoint-down(sm) {
     align-items: flex-start;
     background: none !important;
     border: none !important;
     bottom: auto;
-    flex-direction: column !important;
+    flex-direction: row !important;
     margin: 0 0 10px;
     padding-left: 1rem;
     top: auto;
@@ -117,19 +136,22 @@ $tile-body-a-color: #5959d8 !default;
 }
 
 .tile-bottom-contents {
-  background-color: #f6f7f9;
-  font-size: 12px;
-  line-height: 1.2;
-  padding: 0.8rem 1rem;
+  background-color: transparent;
+  font-size: 17px;
+  line-height: 17px;
+  padding: 0 17px 17px;
+  color: #E2E8F1 !important;
 }
 
 .tile-transactions {
-  color: #a3a9b5;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 10px;
+  color: #E2E8F1 !important;
+  font-size: 17px;
+  line-height: 17px;
   text-align: left;
+
+  .light-text {
+      color: #7E87A1 !important;
+    }
 }
 
 .tile-badge {
@@ -196,7 +218,7 @@ $tile-body-a-color: #5959d8 !default;
   }
 
   .tile-title {
-    color: $tile-title-color;
+    color: $tile-title-color !important;
     font-size: 12px;
 
     &-hash {
@@ -228,9 +250,7 @@ $tile-body-a-color: #5959d8 !default;
     $tile-type-emission-reward-color
   );
   @include generate-tile-block(
-    ".tile-type-transaction",
-    $tile-type-transaction-color
-  );
+    ".tile-type-transaction", #74E0A9);
   @include generate-tile-block(
     ".tile-type-contract-call",
     $tile-type-contract-call-color
@@ -287,10 +307,12 @@ $tile-body-a-color: #5959d8 !default;
   &.tile-type-block {
     max-width: 100%;
     .tile-title {
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 12px;
-      padding: 1rem 1rem 0 1rem;
+      font-weight: 400;
+      font-size: 37px;
+      line-height: 37px;
+      margin-bottom: 30px;
+      padding: 16px;
+      color: #E2E8F1 !important;
     }
   }
 
@@ -343,18 +365,139 @@ $tile-body-a-color: #5959d8 !default;
       border-radius: 2px;
     }
   }
+
+
+
+  //StepScan redesign
+  .tile-body-transactions {
+
+    .tile-transaction-block-topper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .colored-type-block {
+        display: flex;
+        flex-direction: row;
+        &:first-child {
+          padding-right: 5px;
+        }
+      }
+
+      .block-time-info {
+          .block-info {
+            display: inline-block;
+            color: #74E0A9 !important;
+            font-size: 14px;
+            line-height: 14px;
+            padding: 6px 12px;
+            border: 1px solid #74E0A9 !important;
+            border-radius: 5px;
+            margin-right: 25px !important;
+            a {
+              color: #74E0A9 !important;
+            }
+          }
+
+        .time-info {
+          font-size: 17px;
+          line-height: 17px;
+          color: #7E87A1;
+        }
+      }
+    }
+
+    .tile-transaction-block-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 100px;
+
+      a {
+        font-size: 15px !important;
+        line-height: 15px !important;
+        text-decoration: underline !important;
+      }
+
+      .fee-wrapper {
+        font-size: 17px !important;
+        line-height: 17px !important;
+        .tile-tile-fee {
+          color: black;
+        }
+        .tile-title-special {
+          color: white !important;
+          padding-right: 10px !important;
+          margin-right: 10px !important;
+          padding-left: 0 !important;
+          font-size: 17px !important;
+          line-height: 17px !important;
+          border: none !important;
+          border-right: 1px solid white !important;
+        }
+
+        @media (max-width: 1200px) {
+          font-size: 14px !important;
+          line-height: 14px !important;
+        }
+
+        .tile-currency {
+          font-size: 12px !important;
+          line-height: 12px !important;
+        }
+      }
+
+      @media (max-width: 960px) {
+        margin-top: 30px;
+      }
+      @media (max-width: 768px) {
+        align-items: flex-start;
+      }
+    }
+
+    .text-truncate {
+      text-decoration: underline;
+      font-size: 15px;
+      line-height: 15px;
+      padding-bottom: 10px;
+
+    }
+
+    @media (max-width: 768px) {
+      .tile-transaction-block-topper, .tile-transaction-block-footer {
+        flex-direction: column;
+      }
+    }
+
+    .btn-copy-icon-hash {
+      padding-left: 10px;
+      cursor: pointer;
+    }
+
+    .arrow-icon {
+      padding-left: 4px;
+      margin-top: -3px;
+      width: 21px;
+      height: 21px;
+    }
+
+    .transfer-hash-label {
+      display: inline-block;
+      padding-bottom: 10px;
+      font-size: 17px;
+      line-height: 17px;
+      color: black
+    }
+  }
 }
 
 .card-chain-blocks {
   .card-body {
     .col-lg-3 {
-      @include media-breakpoint-down(lg) {
-        padding-left: 6px;
-        padding-right: 6px;
-      }
+        padding-left: 3px;
+        padding-right: 3px;
     }
-    .tile-type-block {  
-      overflow: hidden; 
+    .tile-type-block {
+      overflow: hidden;
     }
     .row {
       @include media-breakpoint-down(lg) {
@@ -494,6 +637,13 @@ $tile-body-a-color: #5959d8 !default;
   }
   100% {
     transform: scaleY(1);
+  }
+}
+
+.tile-type-block {
+  .tile-status-label {
+    display: inline-block;
+    margin-top: -3px;
   }
 }
 

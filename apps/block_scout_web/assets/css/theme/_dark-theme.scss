@@ -1,8 +1,8 @@
-$body-dark: #1c1d31; // body background
+$body-dark: #010312; // body background
 $dark-bg: #22223a; // hero shade
 $dark-light-bg: #282945; // pills bg shade
 $dark-light: #313355; // tile light top share
-$labels-dark: #8a8dba; // header nav, labels
+$labels-dark: #E2E8F1; // header nav, labels
 $dark-stakes-banned-background: #3e314c;
 
 // Switcher
@@ -34,21 +34,25 @@ $dark-stakes-banned-background: #3e314c;
 
 .dark-theme-applied {
 	color: #fff;
+	background-color: $body-dark;
 
 	// navbar
-	.navbar.navbar-primary {
-		background-color: $dark-light-bg;
+	.navbar.navbar-primary  {
+		background-color: transparent !important;
 		.input-group-text {
 			&.border {
 				background-color: $dark-light-bg;
 			}
 		}
-		.nav-submenu {
-			color: $labels-dark;
+		.nav-submenu, .nav-link {
+			color: #7E87A1 !important;
+		}
+		.nav-link:hover {
+			color: white !important;
 		}
 	}
 	.navbar-brand .navbar-logo {
-		filter: brightness(0) invert(1);
+
 	}
 	.navbar.navbar-primary .navbar-nav .nav-link {
 		color: $labels-dark;
@@ -68,16 +72,16 @@ $dark-stakes-banned-background: #3e314c;
 			}
 		}
 	}
-	.navbar.navbar-primary .form-control {
-		background-color: $dark-bg;
-		border-color: $dark-bg;
-		color: #fff;
+	.navbar.navbar-primary {
+		background-color: transparent !important;
+		color: #828ba0;
 		&::placeholder {
-			color: $labels-dark;
+			color: #7E87A1 !important;
 		}
 	}
+
 	.navbar.navbar-primary .navbar-toggler .navbar-toggler-icon {
-		filter: invert(1);
+		//filter: invert(1);
 	}
 
 	// footer
@@ -99,40 +103,53 @@ $dark-stakes-banned-background: #3e314c;
 
 	// hero stats
 
-	.layout-container .dashboard-banner-container {
+	.layout-container  {
 		background-image: none;
-		background-color: $dark-bg !important;
+		background-color: $body-dark !important;
 	}
+	.dashboard-banner-container {
+		background: transparent  !important;
+	}
+
+	.dashboard-banner-network-graph {
+		background-color: #121424;
+	}
+
 	.dashboard-banner-network-plain-container,
 	.dashboard-banner-network-plain-container::after {
-		background-color: $dark-light-bg;
+
 	}
 	.dashboard-banner-network-stats-label,
 	.dashboard-banner-chart-legend .dashboard-banner-chart-legend-label {
 		color: $labels-dark;
 	}
-	.dashboard-banner-network-stats-item::before {
-		background-color: $dark-secondary;
+	.dashboard-banner-network-stats-item {
+		background: #121526;
+
+		.dashboard-banner-network-stats-label, .dashboard-banner-network-stats-value {
+			color: #E2E8F1;
+		}
 	}
+
 	.dashboard-banner-chart-legend .dashboard-banner-chart-legend-item {
 		&.price-per-day {
 			&::before {
 			  background-color: $dark-primary;
 			}
 		  }
-	  
+
 		  &.gas-price-oracle {
 			&::before {
 			  background-color: $dark-primary;
 			}
 		  }
-	  
+
 		  &.market-cap-per-day {
 			&::before {
 			  background-color:$dark-secondary;
 			}
 		  }
-	  
+
 		  &.tx-per-day {
 			&::before {
 			  background-color: $dashboard-line-color-transactions;
@@ -142,12 +159,50 @@ $dark-stakes-banned-background: #3e314c;
 
 	// main container, layout, cards
 	.layout-container main {
-		background-color: $body-dark;
+		background-color: transparent !important;
 	}
 
 	.card {
-		background-color: $dark-light-bg;
-		box-shadow: 0 0 30px 0 rgba(23, 24, 41, 0.5);
+		//background-color: $dark-light-bg;
+		box-shadow: none !important;
+		.tile {
+			background: #111324 !important;
+			border: none !important;
+		}
+
+		.tile-type-contract-call{
+			background: rgba(33, 37, 18, 0.92) !important;
+		}
+		.tile-type-token-transfer {
+			background: rgba(18, 21, 37, 0.92) !important;
+		}
+
+		/*.tile-type-contract-creation {
+			background-color: rgba(146, 61, 195, 0.24);
+		}
+
+		.tile-type-unique-token {
+			background-color: rgba(249, 213, 73, 0.24);
+		}*/
+
+		.card-body {
+			.card-title {
+				color: #E2E8F1 !important;
+			}
+
+			.transactions-list {
+				background: #111324 !important;
+			}
+
+		}
+
+		.card-body-transactions {
+			.tile {
+				background-color: #121525EB !important;
+			}
+		}
+
+
 	}
 
 	.card-header {
@@ -179,9 +234,6 @@ $dark-stakes-banned-background: #3e314c;
 	}
 
 	// Components
-	a {
-		color: $dark-primary;
-	}
 
 	.tile, .tile-code {
 		border-top-color: $dark-light;
@@ -196,40 +248,44 @@ $dark-stakes-banned-background: #3e314c;
 			border-left-color: $dark-light;
 		}
 		.tile-title {
-			color: #fff;
+			color: #E2E8F1;
 		}
 		.tile-transaction-type-block {
 			background-color: transparent;
 		}
 	}
-	.tile-bottom-contents {
-		background-color: $dark-bg;
-	}
 	a.tile-title {
-		color: #fff !important;
+		color: #E2E8F1 !important;
 	}
 	.tile.tile-type-block .tile-transaction-type-block a {
 		color: #fff;
 	}
-	.fade-up-blocks-chain .tile-type-block-animation {
-		background-color: $dark-light;
-		border-top-color: $dark-light;
-		border-right-color: $dark-light;
-		border-bottom-color: $dark-light;
-	}
+
 	.fade-up-blocks-chain .tile-type-block-animation:after {
 		background-color: $dark-light;
 	}
 	.cube-animation-title {
 		color: $labels-dark;
 	}
+	.tile-body {
+		.transfer-hash-label {
+			color: #FFFFFF;
+		}
+
+		.text-truncate {
+			color: #7E87A1 !important;
+		}
+
+		.tile-transaction-block-topper {
+
+		}
+	}
+
 	.tile .tile-body a,
 	.tile a:hover,
 	.tile span[data-address-hash],
-	.tile a[data-test=token_link] { color: $dark-primary; }
-	.fade-up-blocks-chain .tile-type-block-animation .tile-type-line-up {
-		background-color: $dark-primary;
-	}
+	.tile a[data-test=token_link] { color: #7E87A1 !important; }
+
 	.tile.tile-type-block {
 		border-left-color: $dark-primary
 	}
@@ -251,12 +307,35 @@ $dark-stakes-banned-background: #3e314c;
 		color: $dark-primary;
 	}
 
+	.tile-transaction-block-footer {
+		.text-truncate {
+			color: #7E87A1 !important;
+		}
+		a {
+			color: #7E87A1 !important;
+			text-decoration: underline;
+		}
+	}
+
+	.fee-wrapper {
+		.tile-tile-fee {
+			color: #7E87A1 !important;
+		}
+		.tile-title-special {
+			color: white !important;
+		}
+	}
+
+	.transfer-hash-wrapper {
+		a {
+			color: #7E87A1 !important;
+		}
+	}
+
 	// btns
 
 	.btn-line {
 		background-color: transparent;
-		border-color: $dark-primary;
-		color: $dark-primary;
 		&:hover {
 			border-color: $dark-primary;
 			background-color: $dark-primary;
@@ -299,9 +378,7 @@ $dark-stakes-banned-background: #3e314c;
 	// dropdown
 	.dropdown-menu {
 		background-color: $dark-light;
-		border-left-color: $dark-light;
-		border-right-color: $dark-light;
-		border-bottom-color: $dark-light;
+		border: none;
 	}
 
 	.dropdown-item {
@@ -425,18 +502,18 @@ $dark-stakes-banned-background: #3e314c;
 	.tooltip-pale-color.bs-tooltip-auto[x-placement^="top"] .arrow::before {
 		border-top-color: rgba(#fff, 0.5) !important;
 	}
-		
+
 	.tooltip-pale-color.bs-tooltip-right .arrow::before,
 	.tooltip-pale-color.bs-tooltip-auto[x-placement^="right"] .arrow::before {
 		border-right-color: rgba(#fff, 0.5) !important;
 	}
-		
+
 	.tooltip-pale-color.bs-tooltip-bottom .arrow::before,
 	.tooltip-pale-color.bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
 		border-bottom-color: rgba(#fff, 0.5) !important;
 	}
-		
-		
+
+
 	.tooltip-pale-color.bs-tooltip-left .arrow::before,
 	.tooltip-pale-color.bs-tooltip-auto[x-placement^="left"] .arrow::before {
 		border-left-color: rgba(#fff, 0.5) !important;
@@ -445,7 +522,7 @@ $dark-stakes-banned-background: #3e314c;
 	//coin dropdown
 	.token-balance-dropdown.dropdown-menu {
 		border-color: $dark-light !important;
-		box-shadow: 0 0 30px 0 rgba(23, 24, 41, 0.5) !important;
+		box-shadow: none !important;
 	}
 	.token-balance-dropdown .dropdown-search-icon path {
 		fill: $labels-dark;
@@ -554,8 +631,8 @@ $dark-stakes-banned-background: #3e314c;
 
 	// Form Controlls
 	.form-control {
-		background-color: $dark-light;
-		border-color: $dark-light;
+		background-color: #111424 !important;
+		border-color: $body-dark !important;
 		color: #fff;
 		transition: border-color 0.15s ease-in-out;
 
@@ -567,8 +644,6 @@ $dark-stakes-banned-background: #3e314c;
 			color: $labels-dark;
 		}
 		&:focus {
-			background-color: $dark-light;
-			border-color: $dark-primary;
 			color: #fff;
 		}
 
@@ -577,13 +652,21 @@ $dark-stakes-banned-background: #3e314c;
 		&:-webkit-autofill:focus {
 			caret-color: #fff;
 			-webkit-text-fill-color: #fff;
-			-webkit-box-shadow: 0 0 0px 1000px $dark-light inset;
+			-webkit-box-shadow: 0 0 0 1000px $dark-light inset;
 		}
+		.autoComplete_wrapper {
+			input::placeholder {
+				color: #7E87A1 !important;
+			}
+		}
+
 	}
 
 	.input-group:not(.input-status-error) .form-control:focus ~ .input-group-prepend.last {
 		.input-group-text {
-		  border-color: $dark-primary;
+			&.border {
+				background-color:#3C4D8D;
+			}
 		}
 	}
 
@@ -592,6 +675,7 @@ $dark-stakes-banned-background: #3e314c;
 			background: $dark-light;
 			border-color: $dark-light;
 			color: $labels-dark;
+
 		}
 	}
 
@@ -894,7 +978,11 @@ $dark-stakes-banned-background: #3e314c;
 	}
 
 	.stakes-td-link-style {
-		color: $dark-primary;
+		color: #7E87A1 !important;
+	}
+
+	.stakes-td a {
+		color: #7E87A1 !important;
 	}
 
 	.stakes-control-icon path {
@@ -1015,18 +1103,18 @@ $dark-stakes-banned-background: #3e314c;
 	.tooltip-inversed-color.bs-tooltip-auto[x-placement^="top"] .arrow::before {
 		border-top-color: $btn-line-color !important;
 	}
-		
+
 	.tooltip-inversed-color.bs-tooltip-right .arrow::before,
 	.tooltip-inversed-color.bs-tooltip-auto[x-placement^="right"] .arrow::before {
 		border-right-color: $btn-line-color !important;
 	}
-		
+
 	.tooltip-inversed-color.bs-tooltip-bottom .arrow::before,
 	.tooltip-inversed-color.bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
 		border-bottom-color: $btn-line-color !important;
 	}
-		
-		
+
+
 	.tooltip-inversed-color.bs-tooltip-left .arrow::before,
 	.tooltip-inversed-color.bs-tooltip-auto[x-placement^="left"] .arrow::before {
 		border-left-color: $btn-line-color !important;
@@ -1049,7 +1137,7 @@ $dark-stakes-banned-background: #3e314c;
 		  }
 	}
 	.main-search-autocomplete {
-		background-color: $dark-bg !important;
+		background-color: transparent !important;
 		color: #fff !important;
 	}
 	.autocomplete-category {
@@ -1067,6 +1155,25 @@ $dark-stakes-banned-background: #3e314c;
 		}
 		&[aria-selected="true"] {
 			background-color: $dark-primary !important;
+		}
+	}
+
+	.tile-type-block, .fade-up {
+		border: none !important;
+	}
+	.nav-link {
+		color: #7E87A1 !important;
+	}
+	.nav-link:hover {
+		color: white !important;
+	}
+
+	.tile-type-block {
+		.tile-status-label {
+			color: white !important;
+		}
+		.tile-label {
+			color: #7E87A1 !important;
 		}
 	}
 }
@@ -1118,6 +1225,11 @@ $dark-stakes-banned-background: #3e314c;
 		top: 14%;
 		color: $dark-primary;
 	}
+
+	.nav-link:hover {
+		color: #ccd1dc !important;
+	}
+
 }
 .dark-theme-applied .confirmations-label:after {
     border-left: .9rem solid $dark-light-bg;

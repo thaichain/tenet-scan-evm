@@ -55,8 +55,10 @@
     </script>
   </head>
 
-  <body class="body">
+  <body class="body dark-theme-applied">
     <div class="layout-container">
+      <img alt="bubble" src="/images/bubble.png" class="bubble-icon"/>
+      <img alt="bubble" src="/images/bubble2.png" class="bubble-icon-bottom"/>
       <!-- Block for passing backend runtime env variables to frontend -->
       <div id="permanent-dark-mode" class="d-none" ><%= Application.get_env(:block_scout_web, :permanent_dark_mode_enabled) %></div>
       <div id="permanent-light-mode" class="d-none" ><%= Application.get_env(:block_scout_web, :permanent_light_mode_enabled) %></div>
@@ -75,12 +77,11 @@
       end %>
       <%= render BlockScoutWeb.LayoutView, "_topnav.html", current_user: Conn.get_session(@conn, :current_user), conn: @conn %>
 
-      <main class="js-ad-dependant-pt pt-5">
+      <main class="pt-4">
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
         <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
         <%= @inner_content %>
       </main>
-      <%= render BlockScoutWeb.LayoutView, "_footer.html", assigns %>
     </div>
     <%= if (
       @view_module != Elixir.BlockScoutWeb.ChainView &&
