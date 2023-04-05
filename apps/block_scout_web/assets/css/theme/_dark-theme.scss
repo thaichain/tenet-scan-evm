@@ -276,9 +276,8 @@ $light-sliver: #7E87A1;
 		}
 	}
 
-	.tile a {
+	.tile a:not(.btn-line) {
 		color: $light-sliver !important;
-		text-decoration: underline;
 		transition: all 0.2s linear;
 		&:hover {
 			color: white!important;
@@ -625,9 +624,9 @@ $light-sliver: #7E87A1;
 		&::placeholder {
 			color: $labels-dark;
 		}
-		&:focus {
+		&:focus-within {
 			color: #fff;
-			border: 1px solid $light-sliver;
+			border: 1px solid $light-sliver !important;
 		}
 
 		&:-webkit-autofill,
@@ -1201,8 +1200,20 @@ $light-sliver: #7E87A1;
 		}
 	}
 
-	.tokens-list-search-input:focus {
-		border: 1px solid $light-sliver;
+	.tokens-list-search-input {
+		&:focus {
+			border: 1px solid $light-sliver !important;
+		}
+		&::placeholder {
+			color: $light-sliver !important;
+		}
+
+	}
+
+	.success-span {
+		span {
+			color: #74E0A9 !important;
+		}
 	}
 
 }

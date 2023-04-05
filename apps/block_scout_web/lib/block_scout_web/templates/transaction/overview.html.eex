@@ -99,7 +99,7 @@
             </dt>
             <dd class="col-sm-9 col-lg-10">
               <% formatted_result = BlockScoutWeb.TransactionView.formatted_result(status) %>
-              <span class="mr-4" data-transaction-status="<%= formatted_result %>"><%= render BlockScoutWeb.CommonComponentsView, "_status_icon.html", status: status %><%= formatted_result %></span>
+              <span class="mr-4 success-span" data-transaction-status="<%= formatted_result %>"><%= render BlockScoutWeb.CommonComponentsView, "_status_icon.html", status: status %><%= formatted_result %></span>
             </dd>
           </dl>
           <!-- Status -->
