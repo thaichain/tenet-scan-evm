@@ -72,16 +72,14 @@ $dark-stakes-banned-background: #3e314c;
 			}
 		}
 	}
-	.navbar.navbar-primary .form-control {
+	.navbar.navbar-primary {
 		background-color: transparent !important;
 		color: #828ba0;
 		&::placeholder {
 			color: #7E87A1 !important;
 		}
 	}
-	.form-control {
-		color: #FFFFFF !important;
-	}
+
 	.navbar.navbar-primary .navbar-toggler .navbar-toggler-icon {
 		//filter: invert(1);
 	}
@@ -654,8 +652,14 @@ $dark-stakes-banned-background: #3e314c;
 		&:-webkit-autofill:focus {
 			caret-color: #fff;
 			-webkit-text-fill-color: #fff;
-			-webkit-box-shadow: 0 0 0px 1000px $dark-light inset;
+			-webkit-box-shadow: 0 0 0 1000px $dark-light inset;
 		}
+		.autoComplete_wrapper {
+			input::placeholder {
+				color: #7E87A1 !important;
+			}
+		}
+
 	}
 
 	.input-group:not(.input-status-error) .form-control:focus ~ .input-group-prepend.last {
