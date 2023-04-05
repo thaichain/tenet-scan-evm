@@ -23,6 +23,13 @@
   }
 }
 
+.overview-title-item-absolute {
+  position: relative !important;
+  svg {
+    position: absolute !important;
+  }
+}
+
 .address-overview {
   .card-section {
     margin-bottom: $common-container-margin;

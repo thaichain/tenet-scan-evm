@@ -114,7 +114,7 @@ textarea.form-control {
 
 [data-transaction-status="Success"],
 [data-internal-transaction-type="Reward"] {
-  color: $success;
+  color: $success !important;
 }
 
 [data-internal-transaction-type="Call"] {
@@ -132,4 +132,8 @@ textarea.form-control {
 [data-transaction-status^="Error"],
 [data-internal-transaction-type="Suicide"] {
   color: $danger;
+}
+
+.success {
+  color: #74E0A9 !important;
 }

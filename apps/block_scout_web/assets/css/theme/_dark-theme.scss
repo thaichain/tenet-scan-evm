@@ -4,6 +4,7 @@ $dark-light-bg: #282945; // pills bg shade
 $dark-light: #313355; // tile light top share
 $labels-dark: #E2E8F1; // header nav, labels
 $dark-stakes-banned-background: #3e314c;
+$light-sliver: #7E87A1;
 
 // Switcher
 .dark-mode-changer {
@@ -45,7 +46,7 @@ $dark-stakes-banned-background: #3e314c;
 			}
 		}
 		.nav-submenu, .nav-link {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 		.nav-link:hover {
 			color: white !important;
@@ -76,7 +77,7 @@ $dark-stakes-banned-background: #3e314c;
 		background-color: transparent !important;
 		color: #828ba0;
 		&::placeholder {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 	}
 
@@ -162,48 +163,6 @@ $dark-stakes-banned-background: #3e314c;
 		background-color: transparent !important;
 	}
 
-	.card {
-		//background-color: $dark-light-bg;
-		box-shadow: none !important;
-		.tile {
-			background: #111324 !important;
-			border: none !important;
-		}
-
-		.tile-type-contract-call{
-			background: rgba(33, 37, 18, 0.92) !important;
-		}
-		.tile-type-token-transfer {
-			background: rgba(18, 21, 37, 0.92) !important;
-		}
-
-		/*.tile-type-contract-creation {
-			background-color: rgba(146, 61, 195, 0.24);
-		}
-
-		.tile-type-unique-token {
-			background-color: rgba(249, 213, 73, 0.24);
-		}*/
-
-		.card-body {
-			.card-title {
-				color: #E2E8F1 !important;
-			}
-
-			.transactions-list {
-				background: #111324 !important;
-			}
-
-		}
-
-		.card-body-transactions {
-			.tile {
-				background-color: #121525EB !important;
-			}
-		}
-
-
-	}
 
 	.card-header {
 		border-bottom-color: darken($labels-dark, 30);
@@ -273,7 +232,7 @@ $dark-stakes-banned-background: #3e314c;
 		}
 
 		.text-truncate {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 
 		.tile-transaction-block-topper {
@@ -284,7 +243,7 @@ $dark-stakes-banned-background: #3e314c;
 	.tile .tile-body a,
 	.tile a:hover,
 	.tile span[data-address-hash],
-	.tile a[data-test=token_link] { color: #7E87A1 !important; }
+	.tile a[data-test=token_link] { color: $light-sliver !important; }
 
 	.tile.tile-type-block {
 		border-left-color: $dark-primary
@@ -304,22 +263,31 @@ $dark-stakes-banned-background: #3e314c;
 		background-color: $dark-primary;
 	}
 	.tile .tile-title-lg:not([data-balance-change-sign]) {
-		color: $dark-primary;
+		color: $light-sliver !important;
 	}
 
 	.tile-transaction-block-footer {
 		.text-truncate {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 		a {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 			text-decoration: underline;
+		}
+	}
+
+	.tile a {
+		color: $light-sliver !important;
+		text-decoration: underline;
+		transition: all 0.2s linear;
+		&:hover {
+			color: white!important;
 		}
 	}
 
 	.fee-wrapper {
 		.tile-tile-fee {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 		.tile-title-special {
 			color: white !important;
@@ -328,7 +296,11 @@ $dark-stakes-banned-background: #3e314c;
 
 	.transfer-hash-wrapper {
 		a {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
+			transition: all 0.2s linear;
+			&:hover {
+				color: white !important;
+			}
 		}
 	}
 
@@ -475,8 +447,18 @@ $dark-stakes-banned-background: #3e314c;
 	.api-doc-list-item-title {
 		color: #fff;
 	}
+
+	.card-subtitle {
+		a {
+			color: $light-sliver !important;
+			transition: all 0.2s linear !important;
+			&:hover {
+				color: white !important;
+			}
+		}
+	}
 	.api-text-monospace {
-		color: $dark-primary;
+		color: white !important;
 	}
 	.api-text-monospace-background {
 		background-color: rgba($dark-primary, .15);
@@ -645,6 +627,7 @@ $dark-stakes-banned-background: #3e314c;
 		}
 		&:focus {
 			color: #fff;
+			border: 1px solid $light-sliver;
 		}
 
 		&:-webkit-autofill,
@@ -656,7 +639,7 @@ $dark-stakes-banned-background: #3e314c;
 		}
 		.autoComplete_wrapper {
 			input::placeholder {
-				color: #7E87A1 !important;
+				color: $light-sliver !important;
 			}
 		}
 
@@ -978,11 +961,11 @@ $dark-stakes-banned-background: #3e314c;
 	}
 
 	.stakes-td-link-style {
-		color: #7E87A1 !important;
+		color: $light-sliver !important;
 	}
 
 	.stakes-td a {
-		color: #7E87A1 !important;
+		color: $light-sliver !important;
 	}
 
 	.stakes-control-icon path {
@@ -1162,7 +1145,7 @@ $dark-stakes-banned-background: #3e314c;
 		border: none !important;
 	}
 	.nav-link {
-		color: #7E87A1 !important;
+		color: $light-sliver !important;
 	}
 	.nav-link:hover {
 		color: white !important;
@@ -1173,9 +1156,73 @@ $dark-stakes-banned-background: #3e314c;
 			color: white !important;
 		}
 		.tile-label {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 	}
+
+	.card {
+		//background-color: $dark-light-bg;
+		box-shadow: none !important;
+		./*card-body {
+			.card-title {
+				color: #E2E8F1 !important;
+			}
+
+			.transactions-list {
+				background: #111324 !important;
+			}
+
+		}
+
+		.card-body-transactions {
+			.tile {
+				background-color: #121525EB !important;
+			}
+		}*/
+
+
+	}
+
+	.tile {
+		background: #111324 !important;
+		border: none !important;
+	}
+
+	.tile-type-contract-call{
+		background: rgba(33, 37, 18, 0.92) !important;
+	}
+	.tile-type-token-transfer {
+		background: rgba(18, 21, 37, 0.92) !important;
+	}
+
+	.tile-type-contract-creation {
+		background: rgba(49, 56, 26, 0.92)
+	}
+
+    .tile-type-unique-token {
+        background-color: rgba(249, 213, 73, 0.24);
+    }
+
+	.card-body {
+		a {
+			color: $light-sliver !important;
+			transition: all 0.2s linear !important;
+			&:hover {
+				color: white !important;
+			}
+		}
+	}
+
+	.green-chart {
+		canvas {
+			background-color: #74E0A9 !important;
+		}
+	}
+
+	.tokens-list-search-input:focus {
+		border: 1px solid $light-sliver;
+	}
+
 }
 
 .navbar-dark .navbar-toggler {
@@ -1232,7 +1279,7 @@ $dark-stakes-banned-background: #3e314c;
 
 }
 .dark-theme-applied .confirmations-label:after {
-    border-left: .9rem solid $dark-light-bg;
+    border-left: .9rem solid $body-dark;
 }
 
 .dark-theme-applied .i-tooltip-2:hover{
