@@ -14,8 +14,8 @@ $tooltip-color: black !default;
   }
 
   .arrow::before {
-    border-top-color: $tooltip-background-color;
-    border-bottom-color: $tooltip-background-color;
+    border-top-color: $tooltip-background-color !important;
+    border-bottom-color: $tooltip-background-color !important;
   }
 }
 
