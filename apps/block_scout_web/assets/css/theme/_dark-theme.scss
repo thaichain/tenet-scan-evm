@@ -62,16 +62,19 @@ $light-sliver: #7E87A1;
 				fill: $labels-dark;
 			}
 		}
-		&.active, &:hover {
-			.nav-link-icon {
-				svg path {
-					fill: $dark-primary;
+		@media (min-width: 550px) {
+			&.active, &:hover {
+				.nav-link-icon {
+					svg path {
+						fill: $dark-primary;
+					}
+				}
+				&:before {
+					background-color: $dark-primary;
 				}
 			}
-			&:before {
-				background-color: $dark-primary;
-			}
 		}
+
 	}
 	.navbar.navbar-primary {
 		background-color: transparent !important;
@@ -294,12 +297,15 @@ $light-sliver: #7E87A1;
 	}
 
 	.transfer-hash-wrapper {
-		a {
+		a, span {
 			color: $light-sliver !important;
 			transition: all 0.2s linear;
 			&:hover {
 				color: white !important;
 			}
+		}
+		.transfer-hash-label {
+			color: white !important;
 		}
 	}
 
@@ -1215,6 +1221,23 @@ $light-sliver: #7E87A1;
 			color: #74E0A9 !important;
 		}
 	}
+	.card-body .btn-line {
+		color: #010313 !important
+	}
+	.card-body-transactions .btn-line {
+		color: white !important;
+	}
+	.tile-type-block .tile-title {
+		color: #E2E8F1;
+	}
+	[data-transaction-status="Success"],
+	[data-internal-transaction-type="Reward"] {
+		color: #74E0A9 !important;
+	}
+	.success {
+		color: #74E0A9 !important;
+	}
+
 
 }
 
@@ -1235,9 +1258,9 @@ $light-sliver: #7E87A1;
 }
 
 @media (max-width: 991.98px) {
-	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link:hover,
-	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link.activeLink,
-	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link:focus {
+	.dark-theme-applied .navbar.navbar-primary .navbar-nav,
+	.dark-theme-applied .navbar.navbar-primary .navbar-nav,
+	.dark-theme-applied .navbar.navbar-primary .navbar-nav  {
 		background-image: none;
 		width: 100%;
 		background-color: #35335d !important;
@@ -1254,8 +1277,7 @@ $light-sliver: #7E87A1;
 		color: $dark-primary;
 		position: relative;
 	}
-	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link:hover:before
-	{
+	.dark-theme-applied .navbar.navbar-primary .navbar-nav {
 		content: "|";
 		height: 50px;
 		width: 50%;
@@ -1265,11 +1287,6 @@ $light-sliver: #7E87A1;
 		top: 14%;
 		color: $dark-primary;
 	}
-
-	.nav-link:hover {
-		color: #ccd1dc !important;
-	}
-
 }
 .dark-theme-applied .confirmations-label:after {
     border-left: .9rem solid $body-dark;

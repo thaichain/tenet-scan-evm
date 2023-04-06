@@ -6,9 +6,9 @@ $tooltip-color: black !default;
   min-width: 100px;
 
   .tooltip-inner {
-    background-color: $tooltip-background-color;
+    background-color: $tooltip-background-color !important;
     border-radius: 5px;
-    color: $tooltip-color;
+    color: $tooltip-color !important;
     padding: 15px;
     font-size: 12px;
   }
