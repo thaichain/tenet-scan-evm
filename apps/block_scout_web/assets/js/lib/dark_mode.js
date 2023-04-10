@@ -16,7 +16,7 @@ function getThemeMode () {
   const permanentDarkModeEnabled = isPermanentDarkModeEnabled()
   const permanentLightModeEnabled = isPermanentLightModeEnabled()
   if (permanentLightModeEnabled) {
-    return 'light'
+    return 'dark'
   } else if (permanentDarkModeEnabled) {
     return 'dark'
   } else {

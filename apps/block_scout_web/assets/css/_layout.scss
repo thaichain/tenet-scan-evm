@@ -1,7 +1,13 @@
 @import '~@tarekraafat/autocomplete.js/dist/css/autoComplete.01.css';
 
-@import url('http://db.onlinewebfonts.com/c/6228016f2b172c06410f3a2356d33f6c?family=Roobert-Regular');
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+@font-face {
+  font-family: "Roobert-Regular";
+  src: url("../fonts/Roobert-Regular.ttf");
+}
+
 
 
 //font-family: 'Roobert-Regular', sans-serif;
@@ -12,12 +18,30 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Roobert-Regular', sans-serif;
+  font-family: Roobert-Regular, sans-serif;
+  position: relative;
+  z-index: 0;
+  overflow-y: hidden;
+
+  .bubble-icon {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    top: 0;
+    height: 400px;
+  }
+
+  .bubble-icon-bottom {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    top: 600px;
+  }
 
 
   main {
     flex-grow: 1;
-    background-color: #010312;
+    background-color: transparent;
   }
 }
 

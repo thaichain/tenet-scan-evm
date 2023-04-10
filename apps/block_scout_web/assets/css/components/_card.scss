@@ -53,7 +53,7 @@ $card-tab-icon-color-active: #fff !default;
   line-height: 66px;
   font-weight: normal;
   margin-bottom: 10px;
-  color: #E2E8F1 !important;
+  //color: #E2E8F1 !important;
 
   @media (max-width: 960px) {
     font-size: 36px;
@@ -181,17 +181,30 @@ $card-tab-icon-color-active: #fff !default;
     font-size: 17px !important;
     line-height: 17px !important;
     color: #010313 !important;
+    border: none !important;
+    transition: all 0.2s linear;
+
+    &:hover {
+      filter: brightness(0.7);
+    }
 
 
     @media (max-width: 960px) {
       width: fit-content !important;
+    }
+
+    @media (max-width: 768px) {
+      margin-top: -10px;
+      font-size: 14px !important;
+      line-height: 14px !important;
+
     }
   }
 
   .transactions-list {
     .tile {
       border: none !important;
-      background: #111324 !important;
+      //background: #111324 !important;
       border-radius: 10px !important;
       padding: 13px 16px !important;
     }
@@ -202,6 +215,13 @@ $card-tab-icon-color-active: #fff !default;
   .btn-line {
     background-color: #5B68DF !important;
     color: #010313 !important;
+  }
+
+  .tile {
+    border: none !important;
+    //background-color: #121525EB !important;
+    border-radius: 10px !important;
+
   }
 }
 
@@ -227,7 +247,7 @@ $card-tab-icon-color-active: #fff !default;
 
   .tile {
     border: none !important;
-    background: #111324 !important;
+    //background: #111324 !important;
     border-radius: 10px !important;
   }
 }

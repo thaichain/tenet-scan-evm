@@ -1,9 +1,14 @@
 $common-link-color: $primary !default;
 $blue: #4b89fb !default;
-$success: #34c0ad !default;
+$success: #74E0A9 !default;
+
+@font-face {
+  font-family: "Roobert-Regular";
+  src: url("../fonts/Roobert-Regular.ttf");
+}
 
 body {
-  font-family: $font-family;
+  font-family: Roobert-Regular, sans-serif;
   font-size: 12px;
 }
 

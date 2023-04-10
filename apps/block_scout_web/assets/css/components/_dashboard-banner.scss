@@ -25,7 +25,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   padding: 0;
   position: relative;
   height: 370px;
-  background: #010313 !important;
+  //background: #010313 !important;
   @include media-breakpoint-down(sm) {
       height: auto;
   }
@@ -68,7 +68,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   flex-grow: 1;
   padding: 0;
   border-radius: 10px;
-  background-color: #121424;
+  //background-color: #121424;
 
   @include media-breakpoint-up(md) {
     min-width: 500px;
@@ -220,9 +220,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   align-self: flex-end;
   background-color: transparent;
   border-top-left-radius: 10px;
-  display: flex;
   height: 100%;
-  justify-content: center;
   margin: 0;
   max-width: 100%;
   padding: 0;
@@ -254,14 +252,23 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   height: 100%;
   width: 100%;
   max-width: 235px;
+  min-width: 235px;
 
   @include media-breakpoint-down(lg) {
-    grid-template-columns: 1fr 1fr;
-    width: 100% !important;
+    grid-template-columns: 1fr;
+    max-width: 100% !important;
+    .dashboard-banner-network-stats-item {
+      width: 100% !important;
+  }
   }
 
   @media (max-width: 1200px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+
+    .dashboard-banner-network-stats-item {
+      max-width: 100% !important;
+    }
   }
 
   @include media-breakpoint-down(md) {
@@ -269,39 +276,45 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   }
 
   @include media-breakpoint-down(sm) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   @media (max-width: 768px) {
-    max-width: 49%;
+    max-width: 100%;
+    .dashboard-banner-network-stats-item {
+      max-width: 100% !important;
   }
+  }
+
 
   @include stats-item($dashboard-stats-item-border-color, $dashboard-stats-item-label-color, $dashboard-stats-item-value-color);
 
   .dashboard-banner-network-stats-item {
-    background: #121526;
+    //background: #121526;
     border-radius: 10px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-width: 235px !important;
 
     &::before {
       display: none !important;
     }
 
     .dashboard-banner-network-stats-label {
-      font-size: 34px !important;
-      line-height: 34px !important;
-      color: #E2E8F1 !important;
+      font-size: 17px !important;
+      line-height: 17px !important;
+      //color: #E2E8F1 !important;
       font-weight: 400;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .dashboard-banner-network-stats-value {
-      font-size: 17px !important;
-      line-height: 17px !important;
-      color: #E2E8F1 !important;
+
+      font-size: 34px !important;
+      line-height: 34px !important;
+      //color: #E2E8F1 !important;
       font-weight: 400;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -309,17 +322,17 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
 
     @media (max-width: 768px) {
       .dashboard-banner-network-stats-label {
-        font-size: 22px !important;
-        line-height: 22px !important;
-      }
-      .dashboard-banner-network-stats-value {
         font-size: 14px !important;
         line-height: 14px !important;
+      }
+      .dashboard-banner-network-stats-value {
+        font-size: 22px !important;
+        line-height: 22px !important;
       }
     }
 
     @media (max-width: 768px) {
-      .dashboard-banner-network-stats-label {
+      .dashboard-banner-network-stats-value {
         font-size: 18px !important;
         line-height: 18px !important;
       }
