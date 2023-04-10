@@ -4,6 +4,7 @@ $dark-light-bg: #282945; // pills bg shade
 $dark-light: #313355; // tile light top share
 $labels-dark: #E2E8F1; // header nav, labels
 $dark-stakes-banned-background: #3e314c;
+$light-sliver: #7E87A1;
 
 // Switcher
 .dark-mode-changer {
@@ -45,7 +46,7 @@ $dark-stakes-banned-background: #3e314c;
 			}
 		}
 		.nav-submenu, .nav-link {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 		.nav-link:hover {
 			color: white !important;
@@ -61,22 +62,25 @@ $dark-stakes-banned-background: #3e314c;
 				fill: $labels-dark;
 			}
 		}
-		&.active, &:hover {
-			.nav-link-icon {
-				svg path {
-					fill: $dark-primary;
+		@media (min-width: 550px) {
+			&.active, &:hover {
+				.nav-link-icon {
+					svg path {
+						fill: $dark-primary;
+					}
+				}
+				&:before {
+					background-color: $dark-primary;
 				}
 			}
-			&:before {
-				background-color: $dark-primary;
-			}
 		}
+
 	}
 	.navbar.navbar-primary {
 		background-color: transparent !important;
 		color: #828ba0;
 		&::placeholder {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 	}
 
@@ -162,48 +166,6 @@ $dark-stakes-banned-background: #3e314c;
 		background-color: transparent !important;
 	}
 
-	.card {
-		//background-color: $dark-light-bg;
-		box-shadow: none !important;
-		.tile {
-			background: #111324 !important;
-			border: none !important;
-		}
-
-		.tile-type-contract-call{
-			background: rgba(33, 37, 18, 0.92) !important;
-		}
-		.tile-type-token-transfer {
-			background: rgba(18, 21, 37, 0.92) !important;
-		}
-
-		/*.tile-type-contract-creation {
-			background-color: rgba(146, 61, 195, 0.24);
-		}
-
-		.tile-type-unique-token {
-			background-color: rgba(249, 213, 73, 0.24);
-		}*/
-
-		.card-body {
-			.card-title {
-				color: #E2E8F1 !important;
-			}
-
-			.transactions-list {
-				background: #111324 !important;
-			}
-
-		}
-
-		.card-body-transactions {
-			.tile {
-				background-color: #121525EB !important;
-			}
-		}
-
-
-	}
 
 	.card-header {
 		border-bottom-color: darken($labels-dark, 30);
@@ -273,7 +235,7 @@ $dark-stakes-banned-background: #3e314c;
 		}
 
 		.text-truncate {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 
 		.tile-transaction-block-topper {
@@ -284,7 +246,7 @@ $dark-stakes-banned-background: #3e314c;
 	.tile .tile-body a,
 	.tile a:hover,
 	.tile span[data-address-hash],
-	.tile a[data-test=token_link] { color: #7E87A1 !important; }
+	.tile a[data-test=token_link] { color: $light-sliver !important; }
 
 	.tile.tile-type-block {
 		border-left-color: $dark-primary
@@ -304,22 +266,30 @@ $dark-stakes-banned-background: #3e314c;
 		background-color: $dark-primary;
 	}
 	.tile .tile-title-lg:not([data-balance-change-sign]) {
-		color: $dark-primary;
+		color: $light-sliver !important;
 	}
 
 	.tile-transaction-block-footer {
 		.text-truncate {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 		a {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 			text-decoration: underline;
+		}
+	}
+
+	.tile a:not(.btn-line) {
+		color: $light-sliver !important;
+		transition: all 0.2s linear;
+		&:hover {
+			color: white!important;
 		}
 	}
 
 	.fee-wrapper {
 		.tile-tile-fee {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 		.tile-title-special {
 			color: white !important;
@@ -327,8 +297,15 @@ $dark-stakes-banned-background: #3e314c;
 	}
 
 	.transfer-hash-wrapper {
-		a {
-			color: #7E87A1 !important;
+		a, span {
+			color: $light-sliver !important;
+			transition: all 0.2s linear;
+			&:hover {
+				color: white !important;
+			}
+		}
+		.transfer-hash-label {
+			color: white !important;
 		}
 	}
 
@@ -363,7 +340,7 @@ $dark-stakes-banned-background: #3e314c;
 		background-color: $dark-light;
 		&:not(.no-hover):hover {
 			color: #fff;
-			background-color: $dark-primary;
+			background-color: #5B68DF;
 			path {
 				fill: #fff;
 			}
@@ -475,8 +452,18 @@ $dark-stakes-banned-background: #3e314c;
 	.api-doc-list-item-title {
 		color: #fff;
 	}
+
+	.card-subtitle {
+		a {
+			color: $light-sliver !important;
+			transition: all 0.2s linear !important;
+			&:hover {
+				color: white !important;
+			}
+		}
+	}
 	.api-text-monospace {
-		color: $dark-primary;
+		color: white !important;
 	}
 	.api-text-monospace-background {
 		background-color: rgba($dark-primary, .15);
@@ -643,8 +630,9 @@ $dark-stakes-banned-background: #3e314c;
 		&::placeholder {
 			color: $labels-dark;
 		}
-		&:focus {
+		&:focus-within {
 			color: #fff;
+			border: 1px solid $light-sliver !important;
 		}
 
 		&:-webkit-autofill,
@@ -656,7 +644,7 @@ $dark-stakes-banned-background: #3e314c;
 		}
 		.autoComplete_wrapper {
 			input::placeholder {
-				color: #7E87A1 !important;
+				color: $light-sliver !important;
 			}
 		}
 
@@ -978,11 +966,11 @@ $dark-stakes-banned-background: #3e314c;
 	}
 
 	.stakes-td-link-style {
-		color: #7E87A1 !important;
+		color: $light-sliver !important;
 	}
 
 	.stakes-td a {
-		color: #7E87A1 !important;
+		color: $light-sliver !important;
 	}
 
 	.stakes-control-icon path {
@@ -1162,7 +1150,7 @@ $dark-stakes-banned-background: #3e314c;
 		border: none !important;
 	}
 	.nav-link {
-		color: #7E87A1 !important;
+		color: $light-sliver !important;
 	}
 	.nav-link:hover {
 		color: white !important;
@@ -1173,9 +1161,94 @@ $dark-stakes-banned-background: #3e314c;
 			color: white !important;
 		}
 		.tile-label {
-			color: #7E87A1 !important;
+			color: $light-sliver !important;
 		}
 	}
+
+	.card {
+		//background-color: $dark-light-bg;
+		box-shadow: none !important;
+	}
+
+	.tile {
+		background: #111324 !important;
+		border: none !important;
+	}
+
+	.tile-type-contract-call{
+		background: rgba(33, 37, 18, 0.92) !important;
+	}
+	.tile-type-token-transfer {
+		background: rgba(18, 21, 37, 0.92) !important;
+	}
+
+	.tile-type-contract-creation {
+		background: rgba(49, 56, 26, 0.92)
+	}
+
+    .tile-type-unique-token {
+        background-color: rgba(249, 213, 73, 0.24);
+    }
+
+	.card-body {
+		a {
+			color: $light-sliver !important;
+			transition: all 0.2s linear !important;
+			&:hover {
+				color: white !important;
+			}
+		}
+	}
+
+	.green-chart {
+		canvas {
+			background-color: #74E0A9 !important;
+		}
+	}
+
+	.tokens-list-search-input {
+		&:focus {
+			border: 1px solid $light-sliver !important;
+		}
+		&::placeholder {
+			color: $light-sliver !important;
+		}
+
+	}
+
+	.success-span {
+		span {
+			color: #74E0A9 !important;
+		}
+	}
+	.card-body .btn-line {
+		color: #010313 !important;
+		&:hover {
+			color: #010313 !important;
+		}
+	}
+	.card-body-transactions .btn-line {
+		color: white !important;
+		&:hover {
+			color: white !important;
+		}
+	}
+	.tile-type-block .tile-title {
+		color: #E2E8F1;
+	}
+	[data-transaction-status="Success"],
+	[data-internal-transaction-type="Reward"] {
+		color: #74E0A9 !important;
+	}
+	.success {
+		color: #74E0A9 !important;
+	}
+
+	.tile-title-chain {
+		color: #E2E8F1 !important;
+	}
+
+
 }
 
 .navbar-dark .navbar-toggler {
@@ -1197,7 +1270,7 @@ $dark-stakes-banned-background: #3e314c;
 @media (max-width: 991.98px) {
 	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link:hover,
 	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link.activeLink,
-	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link:focus {
+	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link:focus  {
 		background-image: none;
 		width: 100%;
 		background-color: #35335d !important;
@@ -1214,8 +1287,7 @@ $dark-stakes-banned-background: #3e314c;
 		color: $dark-primary;
 		position: relative;
 	}
-	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link:hover:before
-	{
+	.dark-theme-applied .navbar.navbar-primary .navbar-nav {
 		content: "|";
 		height: 50px;
 		width: 50%;
@@ -1225,14 +1297,9 @@ $dark-stakes-banned-background: #3e314c;
 		top: 14%;
 		color: $dark-primary;
 	}
-
-	.nav-link:hover {
-		color: #ccd1dc !important;
-	}
-
 }
 .dark-theme-applied .confirmations-label:after {
-    border-left: .9rem solid $dark-light-bg;
+    border-left: .9rem solid $body-dark;
 }
 
 .dark-theme-applied .i-tooltip-2:hover{

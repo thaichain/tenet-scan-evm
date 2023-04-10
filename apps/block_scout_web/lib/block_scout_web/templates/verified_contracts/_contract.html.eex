@@ -36,7 +36,7 @@
     <!-- Optimization -->
     <td class="stakes-td text-center">
         <%= if @contract.optimization do %>
-            <i style="color: #20b760;" class="fa-regular fa-circle-check"></i>
+            <i style="color: #74E0A9;" class="fa-regular fa-circle-check"></i>
         <% else %>
             <i style="color: #dc3545;" class="fa-regular fa-circle-xmark"></i>
         <% end %>
@@ -44,7 +44,7 @@
     <!-- Constructor arguments -->
     <td class="stakes-td text-center">
         <%= if @contract.constructor_arguments do %>
-            <i style="color: #20b760;" class="fa-regular fa-circle-check"></i>
+            <i style="color: #74E0A9;" class="fa-regular fa-circle-check"></i>
         <% else %>
             <i style="color: #dc3545;" class="fa-regular fa-circle-xmark"></i>
         <% end %>

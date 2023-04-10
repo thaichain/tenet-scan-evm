@@ -1,21 +1,21 @@
-$tooltip-background-color: $btn-line-color !default;
-$tooltip-color: #fff !default;
+$tooltip-background-color: #74E0A9 !default;
+$tooltip-color: black !default;
 
 .tooltip {
   max-width: 250px;
   min-width: 100px;
 
   .tooltip-inner {
-    background-color: $tooltip-background-color;
+    background-color: $tooltip-background-color !important;
     border-radius: 5px;
-    color: $tooltip-color;
+    color: $tooltip-color !important;
     padding: 15px;
     font-size: 12px;
   }
 
   .arrow::before {
-    border-top-color: $tooltip-background-color;
-    border-bottom-color: $tooltip-background-color;
+    border-top-color: $tooltip-background-color !important;
+    border-bottom-color: $tooltip-background-color !important;
   }
 }
 
