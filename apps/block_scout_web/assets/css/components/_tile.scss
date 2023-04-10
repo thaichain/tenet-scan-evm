@@ -776,3 +776,30 @@ $cube-quantity: 5;
     line-height: 20px;
   }
 }
+
+.internal-transaction-body {
+  .internal-transaction-addrs {
+    align-items: flex-end !important;
+
+    @media (max-width: 992px) and (min-width: 768px) {
+      transform: translateX(80px);
+    }
+    @media (max-width: 768px) {
+      align-items: center !important;
+    }
+  }
+
+  .text-truncate {
+    @media (max-width: 500px) {
+      font-size: 10px !important;
+    }
+    @media (max-width: 424px) {
+      font-size: 9px !important;
+    }
+    @media (max-width: 384px) {
+      font-size: 8px !important;
+    }
+  }
+}
+
+

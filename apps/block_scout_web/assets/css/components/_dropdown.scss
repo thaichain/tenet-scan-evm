@@ -82,6 +82,12 @@ $dropdown-menu-item-hover-background: #313131 !default;
   }
 }
 
+.nav-item.dropdown.show {
+  @media (max-width: 992px) {
+    max-height: 32px;
+  }
+}
+
 
 .dropdown-search-icon {
   color: $gray-300;
