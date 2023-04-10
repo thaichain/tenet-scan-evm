@@ -231,6 +231,12 @@ $navbar-logo-width: 203 !default;
   }
 }
 
+.navbar-collapse.collapse.show {
+  @media (max-width: 992px) {
+    min-height: 170px;
+  }
+}
+
 .navbar-brand {
   margin-left: 0;
   flex-shrink: 1;
