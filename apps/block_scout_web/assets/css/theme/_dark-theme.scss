@@ -5,6 +5,7 @@ $dark-light: #313355; // tile light top share
 $labels-dark: #E2E8F1; // header nav, labels
 $dark-stakes-banned-background: #3e314c;
 $light-sliver: #7E87A1;
+$green: #74E0A9;
 
 // Switcher
 .dark-mode-changer {
@@ -182,17 +183,17 @@ $light-sliver: #7E87A1;
 	.card-tab {
 		background-color: transparent;
 		&:hover:not(.active) {
-			background-color: rgba($dark-primary, .15);
-			color: $dark-primary;
+			background-color: rgba($green, .15);
+			color: $green;
 		}
 		&.active {
-			background-color: $dark-primary-alternate;
-			color: #fff;
+			background-color: $green;
+			color: black;
 		}
 	}
 
 	.card-background-1 {
-		background-color: $dark-primary-alternate;
+		background-color: $green;
 	}
 
 	// Components
@@ -321,12 +322,12 @@ $light-sliver: #7E87A1;
 	}
 
 	.btn-copy-icon, .btn-qr-icon, .btn-address-card-icon .btn-contract-icon {
-		border-color: $dark-primary;
+		border-color: $green;
 		path {
-			fill: $dark-primary;
+			fill: $green;
 		}
 		&:hover {
-			background-color: $dark-primary;
+			background-color: $green;
 			path {
 				fill: #fff;
 			}
@@ -891,11 +892,11 @@ $light-sliver: #7E87A1;
 		}
 
 		.modal-status-button-wrapper .btn-line {
-			border-color: $dark-primary-alternate;
-			color: $dark-primary-alternate;
+			border-color: $green;
+			color: $green;
 
 			&:hover {
-				background-color: $dark-primary-alternate;
+				background-color: $green;
 				color: $additional-font;
 			}
 		}
@@ -1202,7 +1203,7 @@ $light-sliver: #7E87A1;
 
 	.green-chart {
 		canvas {
-			background-color: #74E0A9 !important;
+			background-color: $green !important;
 		}
 	}
 
@@ -1218,7 +1219,7 @@ $light-sliver: #7E87A1;
 
 	.success-span {
 		span {
-			color: #74E0A9 !important;
+			color: $green !important;
 		}
 	}
 	.card-body .btn-line {
@@ -1238,10 +1239,10 @@ $light-sliver: #7E87A1;
 	}
 	[data-transaction-status="Success"],
 	[data-internal-transaction-type="Reward"] {
-		color: #74E0A9 !important;
+		color: $green !important;
 	}
 	.success {
-		color: #74E0A9 !important;
+		color: $green !important;
 	}
 
 	.tile-title-chain {
