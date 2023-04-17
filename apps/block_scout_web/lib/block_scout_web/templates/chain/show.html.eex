@@ -110,7 +110,7 @@
             </span>
             <div class="d-flex">
               <span class="dashboard-banner-network-stats-label">
-                  <%= gettext "Total stacked" %>
+                  <%= gettext "Transactions" %>
               </span>
               <%= if @total_gas_usage > 0 do %>
                 <span
