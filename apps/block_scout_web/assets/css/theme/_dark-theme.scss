@@ -1291,12 +1291,15 @@ $green: #74E0A9;
 	.dark-theme-applied .navbar.navbar-primary .navbar-nav {
 		content: "|";
 		height: 50px;
-		width: 50%;
+		width: 45%;
 		opacity: 1;
 		background: none;
 		left: 24%;
 		top: 14%;
 		color: $dark-primary;
+	}
+	.navbar-nav {
+		background: none !important;
 	}
 }
 .dark-theme-applied .confirmations-label:after {
