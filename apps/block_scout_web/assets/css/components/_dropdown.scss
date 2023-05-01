@@ -10,6 +10,7 @@ $dropdown-menu-item-hover-background: #313131 !default;
   box-shadow: $box-shadow;
   padding: 0;
   width: 100%;
+  position: absolute !important;
 
   &.right {
     left: auto;

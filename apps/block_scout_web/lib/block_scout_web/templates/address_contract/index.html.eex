@@ -197,7 +197,7 @@
                     <%= link(
                           gettext("Verify & Publish"),
                           to: path,
-                          class: "button button-primary button-sm float-right ml-3",
+                          class: "button button-primary button-sm float-right ml-3 verify-button",
                           "data-test": "verify_and_publish"
                         ) %>
                   <% end %>
