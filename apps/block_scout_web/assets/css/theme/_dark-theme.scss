@@ -1203,7 +1203,7 @@ $green: #74E0A9;
 
 	.green-chart {
 		canvas {
-			background-color: $green !important;
+			background-color: #90e7b9 !important;
 		}
 	}
 
@@ -1249,6 +1249,14 @@ $green: #74E0A9;
 		color: #E2E8F1 !important;
 	}
 
+	.verify-button {
+		color: white !important;
+		transition: all 0.2s linear;
+		&:hover {
+			filter: brightness(0.7) !important;
+		}
+	}
+
 
 }
 
@@ -1269,9 +1277,9 @@ $green: #74E0A9;
 }
 
 @media (max-width: 991.98px) {
-	.dark-theme-applied .navbar.navbar-primary .navbar-nav,
-	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link.activeLink,
-	.dark-theme-applied .navbar.navbar-primary .navbar-nav .nav-link:focus  {
+	.dark-theme-applied .navbar.navbar-primary,
+	.dark-theme-applied .navbar.navbar-primary .nav-link.activeLink,
+	.dark-theme-applied .navbar.navbar-primary .nav-link:focus  {
 		background-image: none;
 		width: 100%;
 		background-color: #35335d !important;
