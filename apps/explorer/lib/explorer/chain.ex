@@ -6400,13 +6400,19 @@ defmodule Explorer.Chain do
         "100" ->
           "xdai"
 
+        "155" ->
+          "testnet"
+
+        "1559" ->
+          "mainnet"
+
         _ ->
           nil
       end
 
     if chain_name do
       try_url =
-        "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/#{chain_name}/assets/#{address_hash}/logo.png"
+        "/images/token-icons/#{chain_name}/#{address_hash}.png"
 
       try_url
     else

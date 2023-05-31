@@ -46,7 +46,7 @@ $lilac: #b38dc9 !default;
 $red: #c74d39 !default;
 $orange: #ef9a60 !default;
 $yellow: #ffc107 !default;
-$green: #20b760 !default;
+$green: #74E0A9 !default;
 $teal: #009097 !default;
 $cyan: #90e1d8 !default;
 $dark-purple: #923dc3;
@@ -61,7 +61,7 @@ $colors: map-merge(
     "red": $red,
     "orange": $orange,
     "yellow": $yellow,
-    "green": $green,
+    "#74E0A9": $green,
     "teal": $teal,
     "cyan": $cyan,
     "white": $white,
@@ -72,12 +72,12 @@ $colors: map-merge(
 );
 
 $primary: $indigo !default;
-$dark-primary: #9b62ff !default;
-$dark-primary-alternate: #9b62ff !default;
+$dark-primary: #5B68DF !default;
+$dark-primary-alternate: #5B68DF !default;
 $secondary: #7dd79f !default;
 $dark-secondary: #87e1a9 !default;
 $tertiary: $purple !default;
-$success: $green !default;
+$success: #74E0A9 !default;
 $info: $cyan !default;
 $warning: $yellow !default;
 $danger: $red !default;
@@ -217,9 +217,9 @@ $container-max-widths: (
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
   .container {
-    max-width: 1300px !important;
+    max-width: 1350px !important;
   }
  }
 
@@ -310,7 +310,7 @@ $lead-font-weight: 300 !default;
 
 $small-font-size: 80% !default;
 
-$text-muted: $gray-500 !default;
+$text-muted: #7E87A1 !default;
 
 $blockquote-small-color: $gray-600 !default;
 $blockquote-font-size: ($font-size-base * 1.25) !default;

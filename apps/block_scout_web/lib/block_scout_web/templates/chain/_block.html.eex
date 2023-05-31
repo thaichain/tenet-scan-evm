@@ -9,7 +9,7 @@
     <div class="tile-bottom-contents">
       <div class="tile-transactions">
         <span class="mr-2"><%= gettext("%{count} Transactions", count: Enum.count(@block.transactions)) %></span>
-        <span class="text-nowrap" data-from-now="<%= @block.timestamp %>"> </span>
+        <span class="text-nowrap light-text" data-from-now="<%= @block.timestamp %>"> </span>
       </div>
       <%= if !Application.get_env(:block_scout_web, :hide_block_miner) do %>
         <div class="text-truncate">

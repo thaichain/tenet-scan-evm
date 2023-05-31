@@ -41,7 +41,7 @@ $btn-contract-color: $tertiary;
 $tile-body-a-color: $tertiary;
 $tile-type-block-color: $tertiary;
 $tile-type-progress-bar-color: $tertiary;
-a.tile-title { color: $tertiary !important; }
+a.tile-title { color:  $tertiary !important; } //#E2E8F1
 
 // card
 $card-background-1: $tertiary;
@@ -69,7 +69,7 @@ $card-tab-active: $tertiary;
   }
 
   .footer-logo {
-    filter: brightness(0) invert(1);
+    //filter: brightness(0) invert(1);
   }
 }
 
@@ -81,4 +81,4 @@ $api-text-monospace-color: $tertiary;
 // Dark theme
 $dark-primary: #8588ff;
 $dark-secondary: #4ad7a7;
-$dark-primary-alternate: #5b5ed8;
+$dark-primary-alternate: #5B68DF;

@@ -9,10 +9,8 @@ $card-tab-icon-color: #20b760 !default;
 $card-tab-icon-color-active: #fff !default;
 
 .card {
-  background-color: $card-background-color;
-  border-radius: $card-default-border-radius;
+  background-color: transparent;
   border: none;
-  box-shadow: 0 0 30px 0 rgba(202, 199, 226, 0.5);
   margin-bottom: $common-container-margin;
 
   .block-details-row {
@@ -51,10 +49,22 @@ $card-tab-icon-color-active: #fff !default;
 }
 
 .card-title {
-  font-size: 18px;
+  font-size: 66px;
+  line-height: 66px;
   font-weight: normal;
-  line-height: 1.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 10px;
+  //color: #E2E8F1 !important;
+
+  @media (max-width: 960px) {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  @media (max-width: 430px) {
+    font-size: 28px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
 
   &.lg-card-title {
     @media (max-width: 374px) {
@@ -154,7 +164,66 @@ $card-tab-icon-color-active: #fff !default;
 }
 
 .card-body {
-  padding: $card-horizontal-padding;
+  padding: 0;
+
+  .btn-line {
+    width: 476px !important;
+    height: 46px !important;
+    padding: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    background-color: #74E0A9 !important;
+    border-radius: 10px !important;
+    font-family: 'Roobert-Regular',sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 17px !important;
+    line-height: 17px !important;
+    color: #010313 !important;
+    border: none !important;
+    transition: all 0.2s linear;
+
+    &:hover {
+      filter: brightness(0.7);
+    }
+
+
+    @media (max-width: 960px) {
+      width: fit-content !important;
+    }
+
+    @media (max-width: 768px) {
+      margin-top: -10px;
+      font-size: 14px !important;
+      line-height: 14px !important;
+
+    }
+  }
+
+  .transactions-list {
+    .tile {
+      border: none !important;
+      //background: #111324 !important;
+      border-radius: 10px !important;
+      padding: 13px 16px !important;
+    }
+  }
+}
+
+.card-body-transactions {
+  .btn-line {
+    background-color: #5B68DF !important;
+    color: #010313 !important;
+  }
+
+  .tile {
+    border: none !important;
+    //background-color: #121525EB !important;
+    border-radius: 10px !important;
+
+  }
 }
 
 .card-body-flex-column-space-between {
@@ -169,12 +238,18 @@ $card-tab-icon-color-active: #fff !default;
 }
 
 .card-chain-blocks {
-  min-height: 233px;
+  min-height: 212px;
   max-height: auto;
   [class*="col-"]:last-child {
     .tile {
       margin-bottom: 0;
     }
+  }
+
+  .tile {
+    border: none !important;
+    //background: #111324 !important;
+    border-radius: 10px !important;
   }
 }
 
@@ -204,7 +279,7 @@ $card-tab-icon-color-active: #fff !default;
 .card-tab {
   align-items: center;
   background-color: $card-background-color;
-  color: #333;
+  color: #7E87A1;
   cursor: pointer;
   display: flex;
   font-size: 14px;
@@ -267,7 +342,7 @@ $card-tab-icon-color-active: #fff !default;
 .mob-transaction {
   @include media-breakpoint-down(sm) {
     margin-left: 15px!important;
-  } 
+  }
 }
 
 .implementation-container {
@@ -336,8 +411,7 @@ $card-tab-icon-color-active: #fff !default;
   padding-left: $card-horizontal-padding;
   padding-top: $card-horizontal-padding;
 
-  .btn-line-inversed,
-  .btn-line {
+  .btn-line-inversed{
     display: inline-flex;
   }
 }
