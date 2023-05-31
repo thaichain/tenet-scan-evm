@@ -22,6 +22,7 @@ defmodule Explorer.Chain.SmartContract do
   alias Timex.Duration
 
   @burn_address_hash_str "0x0000000000000000000000000000000000000000"
+  @burn_address_hash_str_32 "0x0000000000000000000000000000000000000000000000000000000000000000"
 
   @typep api? :: {:api?, true | false}
 
@@ -352,7 +353,7 @@ defmodule Explorer.Chain.SmartContract do
       ])
       |> (&if(json_verification,
             do: &1,
-            else: validate_required(&1, [:name, :compiler_version, :optimization, :address_hash, :contract_code_md5])
+            else: validate_required(&1, [:compiler_version, :optimization, :address_hash, :contract_code_md5])
           )).()
 
     field_to_put_message = if json_verification, do: :files, else: select_error_field(error)
@@ -608,19 +609,7 @@ defmodule Explorer.Chain.SmartContract do
     if Application.get_env(:explorer, :enable_caching_implementation_data_of_proxy) do
       now = DateTime.utc_now()
 
-      average_block_time =
-        if Application.get_env(:explorer, :avg_block_time_as_ttl_cached_implementation_data_of_proxy) do
-          case AverageBlockTime.average_block_time() do
-            {:error, :disabled} ->
-              0
-
-            duration ->
-              duration
-              |> Duration.to_milliseconds()
-          end
-        else
-          0
-        end
+      average_block_time = get_average_block_time()
 
       fresh_time_distance =
         case average_block_time do
@@ -639,6 +628,21 @@ defmodule Explorer.Chain.SmartContract do
     end
   end
 
+  defp get_average_block_time do
+    if Application.get_env(:explorer, :avg_block_time_as_ttl_cached_implementation_data_of_proxy) do
+      case AverageBlockTime.average_block_time() do
+        {:error, :disabled} ->
+          0
+
+        duration ->
+          duration
+          |> Duration.to_milliseconds()
+      end
+    else
+      0
+    end
+  end
+
   @spec get_implementation_address_hash(Hash.Address.t(), list(), boolean() | nil, [api?]) ::
           {String.t() | nil, String.t() | nil}
   defp get_implementation_address_hash(proxy_address_hash, abi, metadata_from_verified_twin, options)
@@ -647,6 +651,12 @@ defmodule Explorer.Chain.SmartContract do
       abi
       |> Enum.find(fn method ->
         Map.get(method, "name") == "implementation" && Map.get(method, "stateMutability") == "view"
+      end)
+
+    get_implementation_method_abi =
+      abi
+      |> Enum.find(fn method ->
+        Map.get(method, "name") == "getImplementation" && Map.get(method, "stateMutability") == "view"
       end)
 
     master_copy_method_abi =
@@ -658,7 +668,10 @@ defmodule Explorer.Chain.SmartContract do
     implementation_address =
       cond do
         implementation_method_abi ->
-          get_implementation_address_hash_basic(proxy_address_hash, abi)
+          get_implementation_address_hash_basic("5c60da1b", proxy_address_hash, abi)
+
+        get_implementation_method_abi ->
+          get_implementation_address_hash_basic("aaf10f42", proxy_address_hash, abi)
 
         master_copy_method_abi ->
           get_implementation_address_hash_from_master_copy_pattern(proxy_address_hash)
@@ -688,7 +701,7 @@ defmodule Explorer.Chain.SmartContract do
              json_rpc_named_arguments
            ) do
         {:ok, empty_address}
-        when empty_address in ["0x", "0x0", "0x0000000000000000000000000000000000000000000000000000000000000000", nil] ->
+        when empty_address in ["0x", "0x0", @burn_address_hash_str_32, nil] ->
           fetch_beacon_proxy_implementation(proxy_address_hash, json_rpc_named_arguments)
 
         {:ok, implementation_logic_address} ->
@@ -724,13 +737,13 @@ defmodule Explorer.Chain.SmartContract do
            json_rpc_named_arguments
          ) do
       {:ok, empty_address}
-      when empty_address in ["0x", "0x0", "0x0000000000000000000000000000000000000000000000000000000000000000", nil] ->
+      when empty_address in ["0x", "0x0", @burn_address_hash_str_32, nil] ->
         fetch_openzeppelin_proxy_implementation(proxy_address_hash, json_rpc_named_arguments)
 
       {:ok, beacon_contract_address} ->
         case beacon_contract_address
              |> abi_decode_address_output()
-             |> get_implementation_address_hash_basic(implementation_method_abi) do
+             |> get_implementation_address_hash_basic("5c60da1b", implementation_method_abi) do
           <<implementation_address::binary-size(42)>> ->
             {:ok, implementation_address}
 
@@ -755,7 +768,7 @@ defmodule Explorer.Chain.SmartContract do
            json_rpc_named_arguments
          ) do
       {:ok, empty_address}
-      when empty_address in ["0x", "0x0", "0x0000000000000000000000000000000000000000000000000000000000000000"] ->
+      when empty_address in ["0x", "0x0", @burn_address_hash_str_32] ->
         {:ok, "0x"}
 
       {:ok, logic_contract_address} ->
@@ -766,18 +779,20 @@ defmodule Explorer.Chain.SmartContract do
     end
   end
 
-  defp get_implementation_address_hash_basic(proxy_address_hash, abi) do
+  defp get_implementation_address_hash_basic(signature, proxy_address_hash, abi) do
+    # supported signatures:
     # 5c60da1b = keccak256(implementation())
+    # aaf10f42 = keccak256(getImplementation())
     implementation_address =
       case Reader.query_contract(
              proxy_address_hash,
              abi,
              %{
-               "5c60da1b" => []
+               "#{signature}" => []
              },
              false
            ) do
-        %{"5c60da1b" => {:ok, [result]}} -> result
+        %{^signature => {:ok, [result]}} -> result
         _ -> nil
       end
 
@@ -797,7 +812,7 @@ defmodule Explorer.Chain.SmartContract do
              json_rpc_named_arguments
            ) do
         {:ok, empty_address}
-        when empty_address in ["0x", "0x0", "0x0000000000000000000000000000000000000000000000000000000000000000"] ->
+        when empty_address in ["0x", "0x0", @burn_address_hash_str_32] ->
           {:ok, "0x"}
 
         {:ok, logic_contract_address} ->
@@ -816,7 +831,7 @@ defmodule Explorer.Chain.SmartContract do
        when empty_address_hash_string in [
               "0x",
               "0x0",
-              "0x0000000000000000000000000000000000000000000000000000000000000000",
+              @burn_address_hash_str_32,
               @burn_address_hash_str
             ] do
     if is_nil(metadata_from_verified_twin) or !metadata_from_verified_twin do

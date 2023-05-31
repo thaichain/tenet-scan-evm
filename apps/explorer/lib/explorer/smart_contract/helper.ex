@@ -12,6 +12,8 @@ defmodule Explorer.SmartContract.Helper do
 
   def constructor?(function), do: function["type"] == "constructor"
 
+  def fallback?(function), do: function["type"] == "fallback"
+
   def event?(function), do: function["type"] == "event"
 
   def error?(function), do: function["type"] == "error"
@@ -22,7 +24,7 @@ defmodule Explorer.SmartContract.Helper do
   @spec read_with_wallet_method?(%{}) :: true | false
   def read_with_wallet_method?(function),
     do:
-      !error?(function) && !event?(function) && !constructor?(function) && nonpayable?(function) &&
+      !error?(function) && !event?(function) && !constructor?(function) && !fallback?(function) && nonpayable?(function) &&
         !empty_outputs?(function)
 
   def empty_inputs?(function), do: function["inputs"] == []
@@ -120,5 +122,15 @@ defmodule Explorer.SmartContract.Helper do
     map
     |> Map.values()
     |> Enum.reduce(%{}, fn map, acc -> Map.merge(acc, map) end)
+  end
+
+  def contract_creation_input(address_hash) do
+    case Chain.smart_contract_creation_tx_bytecode(address_hash) do
+      %{init: init, created_contract_code: _created_contract_code} ->
+        init
+
+      _ ->
+        nil
+    end
   end
 end

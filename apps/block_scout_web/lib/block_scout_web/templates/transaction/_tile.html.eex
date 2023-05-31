@@ -122,7 +122,6 @@
                   <%= formatted_fee(@transaction, denomination: :ether, include_label: false) %>
                   <span class="tile-currency"> <%= gettext "TX Fee" %></span>
                </span>
-
         </div>
      </div>
   </div>
