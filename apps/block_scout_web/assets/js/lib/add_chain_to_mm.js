@@ -33,7 +33,7 @@ export async function addChainToMM ({ btn }) {
           blockExplorerUrls: [blockscoutURL]
         }]
       })
-    } else {
+    } /*else {
       btn.tooltip('dispose')
       btn.tooltip({
         title: `You're already connected to ${subNetwork}`,
@@ -44,7 +44,7 @@ export async function addChainToMM ({ btn }) {
       setTimeout(() => {
         btn.tooltip('dispose')
       }, 3000)
-    }
+    }*/
   } catch (error) {
     console.error(error)
   }
