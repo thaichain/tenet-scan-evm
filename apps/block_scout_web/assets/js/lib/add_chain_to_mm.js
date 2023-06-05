@@ -16,8 +16,8 @@ export async function addChainToMM ({ btn }) {
     const jsonRPCObj = document.getElementById('js-json-rpc')
     // @ts-ignore
     const jsonRPC = jsonRPCObj && jsonRPCObj.value
-
     const blockscoutURL = location.protocol + '//' + location.host + commonPath
+    console.log({jsonRPCObj, jsonRPC, blockscoutURL, isRendering: chainIDFromWallet !== chainIDFromInstance});
     if (chainIDFromWallet !== chainIDFromInstance) {
       // @ts-ignore
       await window.ethereum.request({
