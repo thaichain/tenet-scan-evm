@@ -2,7 +2,7 @@
     <input id="js-coin-name" class="d-none" value="<%= Explorer.coin_name() %>" />
     <% sub_network = Keyword.get(Application.get_env(:block_scout_web, BlockScoutWeb.Chain), :subnetwork) %>
     <input id="js-subnetwork" class="d-none" value="<%= sub_network %>" />
-    <div>
+    <div class="dropdown-item" style="min-width: 190px">
         <a
             class="footer-link js-btn-add-chain-to-mm btn-add-chain-to-mm in-footer"
             style="cursor: pointer;"
@@ -11,3 +11,4 @@
         </a>
     </div>
 <% end %>
+
