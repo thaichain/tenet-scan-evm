@@ -142,12 +142,12 @@
                           <% end %>
                     </div>
                 </li>
-                <li class="nav-item dropdown" id="moreDetails">
+                <li class="nav-item dropdown">
                     <a href="#" role="button" id="navbarMoreDetails" class="nav-link topnav-nav-link dropdown-toggle"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <%= gettext("More") %>
                     </a>
-                    <div class="dropdown-menu" aria-labeledby="navbarMoreDetails">
+                    <div class="dropdown-menu" aria-labeledby="navbarTransactionsDropdown">
                         <%= render BlockScoutWeb.LayoutView, "_add_chain_to_mm.html" %>
                     </div>
                 </li>
