@@ -16,7 +16,6 @@ export async function addChainToMM ({ btn }) {
     const jsonRPCObj = document.getElementById('js-json-rpc')
     // @ts-ignore
     const jsonRPC = jsonRPCObj && jsonRPCObj.value
-
     const blockscoutURL = location.protocol + '//' + location.host + commonPath
     if (chainIDFromWallet !== chainIDFromInstance) {
       // @ts-ignore
@@ -34,7 +33,7 @@ export async function addChainToMM ({ btn }) {
           blockExplorerUrls: [blockscoutURL]
         }]
       })
-    } else {
+    } /*else {
       btn.tooltip('dispose')
       btn.tooltip({
         title: `You're already connected to ${subNetwork}`,
@@ -45,7 +44,7 @@ export async function addChainToMM ({ btn }) {
       setTimeout(() => {
         btn.tooltip('dispose')
       }, 3000)
-    }
+    }*/
   } catch (error) {
     console.error(error)
   }

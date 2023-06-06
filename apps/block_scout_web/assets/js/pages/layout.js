@@ -187,7 +187,7 @@ $(document)
     }
   })
   .on('click', '.js-btn-add-chain-to-mm', event => {
-    const $btn = $(event.target)
+    const $btn = document.getElementById('navbarMoreDetails')
     addChainToMM({ btn: $btn })
   })
 
